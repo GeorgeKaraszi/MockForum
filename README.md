@@ -1,17 +1,16 @@
 # Starting Up
 
-```
-$: mix deps.get
-$: mix ecto.create
-$: mix ecto.migrate
-$: mix phx.server
-```
-
 ## Setting up Environmental Variables
 ` $: cp .env.example .env.dev`
 
 Assign the proper key values to the `.env.dev` file
 
+## To start The Phoenix server:
+
+  * Install dependencies with `mix deps.get`
+  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
+  * Install Node.js dependencies with `cd /apps/mock_forum_web/assets && npm install`
+  * Start Phoenix endpoint with `mix phx.server`
 
 # Additional Windows Specific Setup
 
@@ -27,7 +26,7 @@ Packages Currently effected as of **6-11-2017**
 
 * Download and install the [Complete GNU make package](http://gnuwin32.sourceforge.net/packages/make.htm) in the default install directory.
 
-* Set up your system environmental variable to point to the **make** application. - _Will require a restart on all command consoles once done_
+* Set your system environmental variables to point to the **make** application. - _Will require a restart on all command consoles once done_
 
     * **Warning:** `setx` can be potentially destructive if not assigning PATH correctly.
         
