@@ -1,7 +1,11 @@
-<div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
-</div>
+<%= link("new subject", to: subject_path(@conn, :new))  %>
+<ul>
+  <%= for subject <- @subjects do %>
+    <li>
+      <%= subject.title %>
+    </li>
+  <% end %>
+</ul>
 
 <div class="row marketing">
   <div class="col-lg-6">

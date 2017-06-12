@@ -1,6 +1,6 @@
 defmodule MockForum.User do
     @moduledoc false
-    
+       
     use MockForum, :model
 
     schema "users" do
