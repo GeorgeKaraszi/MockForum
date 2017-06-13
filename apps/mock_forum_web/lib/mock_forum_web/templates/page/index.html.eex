@@ -2,7 +2,7 @@
 <ul>
   <%= for subject <- @subjects do %>
     <li>
-      <%= subject.title %>
+      <%= link(subject.title, to: subject_path(@conn, :show, subject)) %>
     </li>
   <% end %>
 </ul>

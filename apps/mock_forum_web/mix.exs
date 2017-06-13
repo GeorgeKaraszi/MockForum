@@ -42,7 +42,8 @@ defmodule MockForum.Web.Mixfile do
      {:cowboy, "~> 1.0"},
      {:ueberauth, "~> 0.4"},
      {:ueberauth_github, "~> 0.4"},
-     {:envy, "~> 1.1.1"}]
+     {:envy, "~> 1.1.1"},
+     {:wallaby, "~> 0.17.0", only: :test}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

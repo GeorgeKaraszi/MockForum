@@ -4,4 +4,7 @@ use Mix.Config
 # you can enable the server option below.
 config :mock_forum_web, MockForum.Web.Endpoint,
   http: [port: 4001],
-  server: false
+  server: true
+
+config :mock_forum_web, :sql_sandbox, true
+config :wallaby, screenshot_dir: "../../tmp/screenshots"

@@ -11,6 +11,10 @@ defmodule MockForum.Web.SubjectController do
         render conn, "index.html", subjects: SubjectCommands.all
     end
 
+    def show(conn, %{"id" => subject_id}) do
+        render conn, "show.html", subject: SubjectCommands.find!(subject_id)
+    end
+
     def new(conn, _params) do
         render conn, "new.html", changeset: SubjectCommands.changeset
     end

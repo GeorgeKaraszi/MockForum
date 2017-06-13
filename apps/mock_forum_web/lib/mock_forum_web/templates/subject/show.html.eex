@@ -1,0 +1,5 @@
+<h3><%= @subject.title %></h3>
+<%= link("Edit", to: subject_path(@conn, :edit, @subject)) %>
+
+
+<h1>Topics are to be listed here</h1>
