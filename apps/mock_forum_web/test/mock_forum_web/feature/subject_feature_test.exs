@@ -2,7 +2,7 @@ defmodule MockForum.Web.Feature.SubjectFeatureTest do
   use MockForum.Web.FeatureCase, async: true
 
   import MockForum.Web.Factory
-  import Wallaby.Query, only: [text_field: 1, link: 1, button: 1, css: 2, text: 2]
+  import Wallaby.Query, only: [text_field: 1, link: 1, button: 1, css: 2]
 
   describe "Creating a new subject" do
     test "User can create a new subject and view it", %{session: session} do
