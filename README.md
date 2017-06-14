@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/GeorgeKaraszi/MockForum.svg?branch=master)](https://travis-ci.org/GeorgeKaraszi/MockForum)
+
 # Starting Up
 
 ## Setting up Environmental Variables
