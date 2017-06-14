@@ -25,7 +25,7 @@ defmodule MockForum.Web.Mixfile do
   end
 
   # Specifies which paths to compile per environment.
-  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(:test), do: ["lib", "test/support", "test/factories"]
   defp elixirc_paths(_),     do: ["lib"]
 
   # Specifies your project dependencies.
@@ -42,7 +42,9 @@ defmodule MockForum.Web.Mixfile do
      {:cowboy, "~> 1.0"},
      {:ueberauth, "~> 0.4"},
      {:ueberauth_github, "~> 0.4"},
-     {:envy, "~> 1.1.1"}]
+     {:envy, "~> 1.1.1"},
+     {:wallaby, "~> 0.17.0", only: :test},
+     {:ex_machina, github: "thoughtbot/ex_machina", only: :test}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

@@ -18,6 +18,7 @@ defmodule MockForum.Web.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/subject", SubjectController
   end
 
   scope "/auth", MockForum.Web do
