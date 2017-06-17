@@ -1,19 +1,19 @@
-defmodule MockForum.Subject do
+defmodule MockForum.Thread do
     @moduledoc false
 
     use MockForum, :model
 
-    schema "subjects" do
+    schema "threads" do
+        belongs_to :subject, MockForum.Subject
         field :title, :string
-        field :description, :string
-        has_many :threads, MockForum.Thread, on_delete: :delete_all
 
         timestamps()
     end
-    
+
     def changeset(struct, params \\ %{}) do
         struct
-        |> cast(params, [:title, :description])
+        |> cast(params, [:title, :subject_id])
+        |> cast_assoc(:subject)
         |> validate_required([:title])
     end
 end

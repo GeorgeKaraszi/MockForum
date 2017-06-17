@@ -39,7 +39,10 @@ config :mock_forum_web, MockForum.Web.Endpoint,
       ~r{lib/mock_forum_web/views/.*(ex)$},
       ~r{lib/mock_forum_web/controllers/.*(ex)$},
       ~r{lib/mock_forum_web/controllers/*/.*(ex)$},
-      ~r{lib/mock_forum_web/templates/*/.*(eex)$}
+      ~r{lib/mock_forum_web/templates/*/.*(eex)$},
+      ~r{../mock_forum/lib/mock_forum/*/.*(ex)$},
+      ~r{../mock_forum/lib/mock_forum/.*(ex)$},
+      ~r{../mock_forum/lib/.*(ex)$}
     ]
   ]
 

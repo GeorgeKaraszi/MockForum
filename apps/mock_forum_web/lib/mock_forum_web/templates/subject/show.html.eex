@@ -1,5 +1,14 @@
 <h3><%= @subject.title %></h3>
-<%= link("Edit", to: subject_path(@conn, :edit, @subject)) %>
+<%= link("Edit", to: subject_path(@conn, :edit, @subject), class: "btn btn-primary") %>
 
+<br/><br/>
+<%= link("New Thread", to: thread_path(@conn, :new, @subject.id)) %>
+<br/><br/>
 
-<h1>Topics are to be listed here</h1>
+<%= for thread <- @subject.threads do %>
+<ul>
+    <li>
+        <%= link(thread.title, to: thread_path(@conn, :show, @subject, thread)) %>
+    </li>
+</ul>
+<% end %>

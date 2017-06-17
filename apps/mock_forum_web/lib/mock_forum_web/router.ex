@@ -21,6 +21,11 @@ defmodule MockForum.Web.Router do
     resources "/subject", SubjectController
   end
 
+  scope "/subject/:subject_id", MockForum.Web do
+    pipe_through :browser
+    resources "/thread", ThreadController
+  end
+
   scope "/auth", MockForum.Web do
     pipe_through :browser
     
