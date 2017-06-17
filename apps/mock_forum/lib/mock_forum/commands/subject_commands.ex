@@ -3,26 +3,12 @@ defmodule MockForum.Commands.SubjectCommands do
         Commands used to create forum subjects
     """
     use MockForum, :commands
-   
-   def all,                 do: Repo.all(Subject)
-   def find(subject_id),    do: Repo.get(Subject, subject_id)
-   def find!(subject_id),   do: Repo.get!(Subject, subject_id)
-   def delete!(subject_id), do: subject_id |> find!() |> Repo.delete!
-
-   def changeset(record \\ %Subject{}, record_params \\ %{}) do
-       record |> Subject.changeset(record_params)
-   end
+    use MockForum.Commands.CrudCommands, 
+        record_schema:  %Subject{}, 
+        record_type: Subject, 
+        associations: [:threads]
 
     def create(subject) do
-        %Subject{}
-        |> changeset(subject)
-        |> Repo.insert()
-    end
-
-    def update(old_subject_id, subject) do
-        Subject
-        |> Repo.get(old_subject_id)
-        |> changeset(subject)
-        |> Repo.update()
+        %Subject{} |> changeset(subject) |> Repo.insert
     end
 end

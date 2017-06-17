@@ -14,7 +14,8 @@ defmodule MockForum do
       use Ecto.Schema
       import Ecto
       import Ecto.Changeset
-      alias MockForum.{Repo, User, Subject}
+      import Ecto.Query
+      alias MockForum.{Repo, User, Subject, Thread}
     end
   end
 

@@ -29,7 +29,7 @@ defmodule MockForum.Web.Feature.SubjectFeatureTest do
       session
       |> visit("/")
       |> click(link(subject.title))
-      |> has_text?("Topics are to be listed here")
+      |> assert_has(link("New Thread"))
     end
   end
 end

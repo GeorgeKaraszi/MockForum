@@ -1,0 +1,3 @@
+<%= form_for @changeset, thread_path(@conn, :create, @subject), fn f -> %>
+    <%= render MockForum.Web.ThreadView, "_form.html", f: f %>
+<% end %>

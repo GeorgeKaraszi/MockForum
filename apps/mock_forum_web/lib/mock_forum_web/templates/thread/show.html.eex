@@ -1,0 +1,3 @@
+<h1><%= @thread.title %></h1> <%= link("Edit Title", to: thread_path(@conn, :edit, @subject, @thread), class: "btn btn-primary") %>
+
+<%= link("Delete Thread", to: thread_path(@conn, :delete, @subject, @thread), method: :delete, class: "btn btn-primary") %>

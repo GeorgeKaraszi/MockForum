@@ -8,11 +8,11 @@ defmodule MockForum.Web.SubjectController do
     alias MockForum.Commands.SubjectCommands
 
     def index(conn, _params) do
-        render conn, "index.html", subjects: SubjectCommands.all
+        render conn, "index.html", subjects: SubjectCommands.all(true)
     end
 
     def show(conn, %{"id" => subject_id}) do
-        render conn, "show.html", subject: SubjectCommands.find!(subject_id)
+        render conn, "show.html", subject: SubjectCommands.find!(subject_id, :preload)
     end
 
     def new(conn, _params) do
