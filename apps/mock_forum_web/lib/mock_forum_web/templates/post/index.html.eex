@@ -1,0 +1,15 @@
+<h2>All posts are to be listed here</h2>
+<%= link("New post", to: thread_post_path(@conn, :new, @thread)) %> 
+
+
+<ul class="list-group">
+            <%= for post <- @posts do %>
+                <li class="list-group-item"> 
+                    <%= post.message %>
+                    <span class="nav navbar-nav navbar-right">
+                        <%= link("Edit", to: thread_post_path(@conn, :edit, @thread, post), class: "btn btn-primary") %>
+                        <%= link("Destroy", to: thread_post_path(@conn, :delete, @thread, post), method: :delete, class: "btn btn-danger") %>
+                    </span>
+                </li>
+            <% end %>
+</ul>

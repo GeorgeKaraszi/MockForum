@@ -2,13 +2,13 @@
 <%= link("Edit", to: subject_path(@conn, :edit, @subject), class: "btn btn-primary") %>
 
 <br/><br/>
-<%= link("New Thread", to: thread_path(@conn, :new, @subject.id)) %>
+<%= link("New Thread", to: subject_thread_path(@conn, :new, @subject.id)) %>
 <br/><br/>
 
 <%= for thread <- @subject.threads do %>
 <ul>
     <li>
-        <%= link(thread.title, to: thread_path(@conn, :show, @subject, thread)) %>
+        <%= link(thread.title, to: thread_post_path(@conn, :index, thread)) %>
     </li>
 </ul>
 <% end %>

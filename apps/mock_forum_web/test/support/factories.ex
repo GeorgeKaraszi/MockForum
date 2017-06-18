@@ -4,4 +4,5 @@ defmodule MockForum.Web.Factory do
   use ExMachina.Ecto, repo: MockForum.Repo
   use MockForum.Web.SubjectFactory
   use MockForum.Web.ThreadFactory
+  use MockForum.Web.PostFactory
 end

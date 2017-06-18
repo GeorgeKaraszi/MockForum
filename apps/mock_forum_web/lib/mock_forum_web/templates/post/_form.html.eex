@@ -1,0 +1,6 @@
+<div class="form-group">
+    <%= textarea @f, :message, placeholder: "Message", class: "form-control" %>
+    <%= error_tag @f, :message %>
+
+    <%= submit "Submit", class: "btn btn-primary" %>
+</div>
