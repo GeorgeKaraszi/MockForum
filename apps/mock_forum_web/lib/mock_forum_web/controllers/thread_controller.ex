@@ -12,7 +12,7 @@ defmodule MockForum.Web.ThreadController do
     end
 
     def show(conn, %{"subject_id" => subject_id, "id" => thread_id}) do
-        render conn, "show.html", subject: subject_id, thread: ThreadCommands.find!(thread_id)
+        redirect(conn, to: thread_post_path(conn, :index, thread_id))
     end
 
     def new(conn, %{"subject_id" => subject_id}) do
@@ -47,11 +47,11 @@ defmodule MockForum.Web.ThreadController do
         case ThreadCommands.update(thread_id, thread) do
             {:ok, _thread} ->
                 conn
-                |> put_flash(:info, "successfully edited the subject")
-                |> redirect(to: thread_path(conn, :show, subject_id, thread_id))
+                |> put_flash(:info, "successfully edited the thread")
+                |> redirect(to: subject_thread_path(conn, :show, subject_id, thread_id))
             {:error, changeset} ->
                 conn
-                |> put_flash(:error, "There was an error with editing this subject")
+                |> put_flash(:error, "There was an error with editing this thread")
                 |> render("edit.html", changeset: changeset, subject: subject_id)
         end
     end
@@ -60,7 +60,7 @@ defmodule MockForum.Web.ThreadController do
         ThreadCommands.delete!(thread_id)
 
         conn
-        |> put_flash(:info, "Successfully deleted the subject")
+        |> put_flash(:info, "Successfully deleted the thread")
         |> redirect(to: subject_path(conn, :show, subject_id))
     end
 end

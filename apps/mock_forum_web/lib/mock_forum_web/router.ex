@@ -18,12 +18,14 @@ defmodule MockForum.Web.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/subject", SubjectController
+    resources "/subject", SubjectController do
+          resources "/thread", ThreadController
+    end
   end
 
-  scope "/subject/:subject_id", MockForum.Web do
+  scope "/thread/:thread_id", MockForum.Web, as: :thread do
     pipe_through :browser
-    resources "/thread", ThreadController
+    resources "/post", PostController
   end
 
   scope "/auth", MockForum.Web do

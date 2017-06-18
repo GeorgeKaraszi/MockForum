@@ -7,6 +7,8 @@ defmodule MockForum.Thread do
         belongs_to :subject, MockForum.Subject
         field :title, :string
 
+        has_many :posts, MockForum.Post, on_delete: :delete_all 
+
         timestamps()
     end
 
