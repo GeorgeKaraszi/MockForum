@@ -14,7 +14,7 @@ defmodule MockForum.Web.Feature.PostFeatureTest do
         |> assert_has(css(".help-block", text: "can't be blank"))
         |> fill_in(text_field("post_message"), with: "Here is my post")
         |> click(button("Submit"))
-        |> assert_has(css(".list-group-item", text: "Here is my post"))
+        |> assert_has(css(".timeline-body", text: "Here is my post"))
     end
   end
 end
