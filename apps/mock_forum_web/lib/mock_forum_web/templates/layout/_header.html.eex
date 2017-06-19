@@ -1,0 +1,21 @@
+<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><%= link("Phx 1.3 Mock Forum", to: page_path(@conn, :index)) %></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li class="current_page_item">
+                     <%= link("Homepage", to: page_path(@conn, :index), accesskey: "1") %>
+                </li>
+				<li>
+                    <%= if @conn.assigns[:user] do %>
+                        <%= link("Signout", to: auth_path(@conn, :signout) , accesskey: "2") %>
+                    <% else %>
+                        <%= link("Login With Github", to: auth_path(@conn, :request, "github") , accesskey: "2") %>
+                    <% end %>
+                </li>
+			</ul>
+		</div>
+	</div>
+</div>

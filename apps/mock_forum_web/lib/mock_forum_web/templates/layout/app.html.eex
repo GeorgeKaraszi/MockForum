@@ -9,35 +9,29 @@
 
     <title>Hello MockForum!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/timeline.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/font.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/timeline.css") %>">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" rel="stylesheet" />
   </head>
 
   <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li>
-            <%= if @conn.assigns[:user] do %>
-              <%= link("Signout", to: auth_path(@conn, :signout), class: "btn btn-secounday") %>
-            <% else %>
-              <%= link("Login With Github", to: auth_path(@conn, :request, "github"), class: "btn btn-primary") %>
-            <% end %>
-            </li>
-          </ul>
-        </nav>
-        <%= link to: page_path(@conn, :index) do %>
-          <span class="logo"></span>
-        <% end %>
-      </header>
+    <%= render MockForum.Web.LayoutView, "_header.html", conn: @conn %>
+    <div id="featured">&nbsp;</div>
+    <div id="wrapper">
+      <div id="page" class="container">
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+        <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+        <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
 
-    </div> <!-- /container -->
+        <div id="content">
+          <main role="main">
+            <%= render @view_module, @view_template, assigns %>
+          </main>
+        </div>
+      </div> <!-- /container -->
+    </div>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
