@@ -2,5 +2,11 @@
     <%= text_input @f, :title, placeholder: "Title", class: "form-control" %>
     <%= error_tag @f, :title %>
 
+
+    <%= inputs_for @f, :posts, fn e -> %>
+        <%= textarea e, :message, placeholder: "Message", class: "form-control" %>
+        <%= error_tag e, :message %>
+    <% end %>
+
     <%= submit "Submit", class: "btn btn-primary" %>
 </div>
