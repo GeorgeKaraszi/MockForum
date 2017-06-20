@@ -7,6 +7,7 @@
     <tr>
       <th></th>
       <th>Last Updated</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -14,6 +15,7 @@
       <tr>
         <td><%= link(thread.title, to: thread_post_path(@conn, :index, thread)) %></td>
         <td><%= thread.updated_at %></td>
+        <td><%= link("Delete", to: subject_thread_path(@conn, :delete, @subject, thread), method: :delete) %></td>
       </tr>
   <% end %>
 
