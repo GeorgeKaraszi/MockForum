@@ -5,19 +5,19 @@ defmodule MockForum.Web.ThreadController do
 
     use MockForum.Web, :controller
     
-    alias MockForum.Commands.{ThreadCommands, SubjectCommands}
+    alias MockForum.Commands.{ThreadCommands, SubjectCommands, PostCommands}
 
     def index(conn, _params) do
         render conn, "index.html", subjects: ThreadCommands.all
     end
 
-    def show(conn, %{"subject_id" => subject_id, "id" => thread_id}) do
+    def show(conn, %{"id" => thread_id}) do
         redirect(conn, to: thread_post_path(conn, :index, thread_id))
     end
 
     def new(conn, %{"subject_id" => subject_id}) do
         subject   = SubjectCommands.find(subject_id)
-        changeset = ThreadCommands.changeset
+        changeset = ThreadCommands.new_thread
         render conn, "new.html", changeset: changeset, subject: subject
     end
 
@@ -34,13 +34,6 @@ defmodule MockForum.Web.ThreadController do
                 |> put_flash(:error, "Failed to create new thread")
                 |> render("new.html", changeset: changeset, subject: subject)
         end
-    end
-
-    def edit(conn, %{"subject_id" => subject_id, "id" => thread_id}) do
-        thread    = ThreadCommands.find(thread_id)
-        changeset = ThreadCommands.changeset(thread)
-
-        render conn, "edit.html", changeset: changeset, thread: thread, subject: subject_id
     end
 
     def update(conn, %{"subject_id" => subject_id, "id" => thread_id,  "thread" => thread}) do

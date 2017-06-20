@@ -10,11 +10,37 @@ defmodule MockForum.Web.Feature.ThreadFeatureTest do
         session
         |> visit("/subject/#{subject.id}")
         |> click(link("New Thread"))
+        |> fill_in(text_field("thread_posts_0_message"), with: "Here is my thread body")
         |> click(button("Submit"))
         |> assert_has(css(".help-block", text: "can't be blank"))
         |> fill_in(text_field("thread_title"), with: "Here is my thread name")
         |> click(button("Submit"))
         |> assert_has(link("Here is my thread name"))
+    end
+
+    test "A thread message cannot be blank", %{session: session} do
+        subject = insert(:subject)
+        session
+        |> visit("/subject/#{subject.id}")
+        |> click(link("New Thread"))
+        |> fill_in(text_field("thread_title"), with: "Here is my thread title")
+        |> click(button("Submit"))
+        |> assert_has(css(".help-block", text: "can't be blank"))
+        |> fill_in(text_field("thread_posts_0_message"), with: "Here is my thread body")
+        |> click(button("Submit"))
+        |> assert_has(link("Here is my thread title"))
+    end
+
+    test "Creating a new thread creates a message", %{session: session} do
+        subject = insert(:subject)
+        session
+        |> visit("/subject/#{subject.id}")
+        |> click(link("New Thread"))
+        |> fill_in(text_field("thread_title"), with: "Here is my thread title")
+        |> fill_in(text_field("thread_posts_0_message"), with: "Here is my thread body")
+        |> click(button("Submit"))
+        |> click(link("Here is my thread title"))
+        |> assert_has(css(".timeline-body", text: "Here is my thread body"))
     end
   end
 

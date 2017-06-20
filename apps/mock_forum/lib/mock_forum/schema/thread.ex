@@ -16,6 +16,7 @@ defmodule MockForum.Thread do
         struct
         |> cast(params, [:title, :subject_id])
         |> cast_assoc(:subject)
+        |> cast_assoc(:posts)
         |> validate_required([:title])
     end
 end
