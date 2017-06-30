@@ -3,9 +3,9 @@ defmodule MockForum.Commands.ThreadCommands do
         Commands used to create forum threads that are assoicated with the Subject parent
     """
     use MockForum, :commands
-    use MockForum.Commands.CrudCommands, 
-        record_schema:  %Thread{}, 
-        record_type: Thread, 
+    use MockForum.Commands.CrudCommands,
+        record_schema:  %Thread{},
+        record_type: Thread,
         associations: [posts: :user]
 
     alias MockForum.Commands.PostCommands
@@ -18,19 +18,22 @@ defmodule MockForum.Commands.ThreadCommands do
     def create(subject, user, thread_params) do
         thread_params = assign_user(thread_params, user)
 
-        subject 
-        |> build_assoc(:threads) 
-        |> changeset(thread_params) 
+        subject
+        |> build_assoc(:threads)
+        |> changeset(thread_params)
         |> Repo.insert
     end
 
+    # Ensure that we can assign a user to the given post.
 
-    # This is a very dirty method for assign the user to the new thread's inital post
-    # I am looking for a more cleaner method to fix this nested struct mess!
+    defp assign_user(params, %{id: id} = user) do
+        assign_nested_struct(params, "posts", "user_id", id, Map.keys(params["posts"]))
+    end
 
-    defp assign_user(params, user) do
-        set_user = Map.put(params["posts"]["0"], "user_id", user.id)
-        set_post = Map.put(params["posts"], "0", set_user)
-        Map.put(params, "posts", set_post)
+    defp assign_nested_struct(params, _access_key, _key, _value, []), do: params
+    defp assign_nested_struct(params, access_key, key, value, [index | index_tail]) do
+        params[access_key][index][key]
+        |> put_in(value)
+        |> assign_nested_struct(access_key, key, value, index_tail)
     end
 end
