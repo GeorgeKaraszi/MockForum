@@ -1,15 +1,15 @@
 defmodule MockForum.Web.Plugs.RequireAuth do
     @moduledoc """
-        Checks to see if the user has been assigned to the connection. 
+        Checks to see if the user has been assigned to the connection.
         If not, it will redirect back to the root page with an error message.
     """
     import Plug.Conn
     import Phoenix.Controller
 
-    alias MockForum.Router.Helpers
+    alias MockForum.Web.Router.Helpers
 
     def init(_params) do
-        
+
     end
 
     def call(conn, _params) do
@@ -22,5 +22,5 @@ defmodule MockForum.Web.Plugs.RequireAuth do
             |> halt()
         end
     end
-    
+
 end

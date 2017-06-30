@@ -4,9 +4,20 @@ defmodule MockForum.Web.Feature.ThreadFeatureTest do
   import MockForum.Web.Factory
   import Wallaby.Query, only: [text_field: 1, link: 1, button: 1, css: 2]
 
+  setup %{session: session} do
+    user = insert(:user)
+
+    session
+    |> visit("/")
+    |> set_cookie("user_id", user.id)
+
+    {:ok, session: session, user: user}
+  end
+
   describe "Creating a new thread" do
     test "A thread name cannot be blank", %{session: session} do
         subject = insert(:subject)
+
         session
         |> visit("/subject/#{subject.id}")
         |> click(link("New Thread"))

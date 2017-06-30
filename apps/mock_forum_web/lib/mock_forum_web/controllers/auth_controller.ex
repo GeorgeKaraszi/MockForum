@@ -22,7 +22,7 @@ defmodule MockForum.Web.AuthController do
         changeset = User.changeset(%User{}, user_params)
         signin(conn, changeset)
     end
-    
+
     def signout(conn, _params) do
         conn
         |> configure_session(drop: true)
