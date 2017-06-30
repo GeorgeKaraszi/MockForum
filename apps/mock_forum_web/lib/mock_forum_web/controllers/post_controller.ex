@@ -4,6 +4,7 @@ defmodule MockForum.Web.PostController do
     """
 
     use MockForum.Web, :controller
+    plug MockForum.Web.Plugs.RequireAuth when action in [:new, :create, :edit, :update]
     
     alias MockForum.Commands.{ThreadCommands, PostCommands}
 
@@ -20,8 +21,7 @@ defmodule MockForum.Web.PostController do
 
     def create(conn, %{"thread_id" => thread_id, "post" => post_params}) do
         thread = ThreadCommands.find!(thread_id)
-
-        case PostCommands.create(thread, post_params) do
+        case PostCommands.create(thread, conn.assigns[:user], post_params) do
             {:ok, _post} ->
                 conn
                 |> put_flash(:info, "Successfully posted!")

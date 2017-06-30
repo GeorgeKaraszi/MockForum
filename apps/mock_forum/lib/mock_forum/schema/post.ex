@@ -5,6 +5,7 @@ defmodule MockForum.Post do
 
     schema "posts" do
         belongs_to :thread, MockForum.Thread
+        belongs_to :user, MockForum.User
         field :message, :string
 
         timestamps()
@@ -12,8 +13,9 @@ defmodule MockForum.Post do
 
     def changeset(struct, params \\ %{}) do
         struct
-        |> cast(params, [:message, :thread_id])
+        |> cast(params, [:message, :user_id, :thread_id])
         |> cast_assoc(:thread)
+        |> cast_assoc(:user)
         |> validate_required([:message])
     end
 end

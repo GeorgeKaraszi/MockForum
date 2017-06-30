@@ -9,6 +9,8 @@ defmodule MockForum.User do
         field :email, :string
         field :token, :string
         field :provider, :string
+        
+        has_many :posts, MockForum.Post, on_delete: :delete_all
 
         timestamps()
     end
