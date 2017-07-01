@@ -8,7 +8,12 @@ defmodule MockForum.Commands.PostCommands do
         record_type: Post, 
         associations: []
 
-    def create(thread, thread_params) do
-        thread |> build_assoc(:posts) |> changeset(thread_params) |> Repo.insert
+    def create(thread, user, post_params) do
+     %Post{} 
+        |> changeset(post_params) 
+        |> change
+        |> put_assoc(:user, user, required: true)
+        |> put_assoc(:thread, thread, required: true)
+        |> Repo.insert
     end
 end

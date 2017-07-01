@@ -4,8 +4,10 @@ defmodule MockForum.Web.ThreadController do
     """
 
     use MockForum.Web, :controller
+
+    plug MockForum.Web.Plugs.RequireAuth when action in [:new, :create, :edit, :update]
     
-    alias MockForum.Commands.{ThreadCommands, SubjectCommands, PostCommands}
+    alias MockForum.Commands.{ThreadCommands, SubjectCommands}
 
     def index(conn, _params) do
         render conn, "index.html", subjects: ThreadCommands.all
@@ -24,7 +26,7 @@ defmodule MockForum.Web.ThreadController do
     def create(conn, %{"subject_id" => subject_id, "thread" => thread_params}) do
         subject = SubjectCommands.find(subject_id)
 
-        case ThreadCommands.create(subject, thread_params) do
+        case ThreadCommands.create(subject, conn.assigns.user, thread_params) do
             {:ok, _thread} ->
                 conn
                 |> put_flash(:info, "successfully created a new thread")
