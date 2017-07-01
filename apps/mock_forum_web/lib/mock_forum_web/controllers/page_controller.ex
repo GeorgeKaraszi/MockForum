@@ -1,9 +1,9 @@
 defmodule MockForum.Web.PageController do
   use MockForum.Web, :controller
 
-  alias MockForum.Commands.SubjectCommands
+  alias MockForum.Category
 
   def index(conn, _params) do
-    render conn, "index.html", subjects: SubjectCommands.all
+    render conn, "index.html", categories: Category.all(true)
   end
 end

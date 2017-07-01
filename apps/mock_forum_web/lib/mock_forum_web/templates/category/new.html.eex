@@ -1,0 +1,3 @@
+<%= form_for @changeset, category_path(@conn, :create), fn f -> %>
+    <%= render MockForum.Web.CategoryView, "_form.html", f: f %>
+<% end %>

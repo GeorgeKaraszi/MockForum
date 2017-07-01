@@ -1,17 +1,20 @@
-<%= link("new subject", to: subject_path(@conn, :new), class: "btn btn-primary")  %>
+<%= link("new category", to: category_path(@conn, :new), class: "btn btn-primary")  %>
 
 <table class="table table-striped" cellspacing="0", width="100%">
   <thead>
     <tr>
       <th></th>
-      <th>Last Updated</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <%= for subject <- @subjects do %>
+    <%= for category <- @categories do %>
       <tr>
-        <td><%= link(subject.title, to: subject_path(@conn, :show, subject)) %></td>
-        <td><%= subject.updated_at %></td>
+        <td><strong><%= category.title %></strong></td>
+        <td>
+            <%= link("new subject", to: subject_path(@conn, :new, category_id: category.id), class: "btn-sm btn-success")  %>
+          </td>
+        <%= render MockForum.Web.PageView, "_subjects.html", conn: @conn, category: category %>
       </tr>
   <% end %>
 

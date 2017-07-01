@@ -7,10 +7,10 @@ defmodule MockForum.Web.ThreadController do
 
     plug MockForum.Web.Plugs.RequireAuth when action in [:new, :create, :edit, :update]
     
-    alias MockForum.Commands.{ThreadCommands, SubjectCommands}
+    alias MockForum.{Thread, Subject}
 
     def index(conn, _params) do
-        render conn, "index.html", subjects: ThreadCommands.all
+        render conn, "index.html", subjects: Thread.all
     end
 
     def show(conn, %{"id" => thread_id}) do
@@ -18,15 +18,15 @@ defmodule MockForum.Web.ThreadController do
     end
 
     def new(conn, %{"subject_id" => subject_id}) do
-        subject   = SubjectCommands.find(subject_id)
-        changeset = ThreadCommands.new_thread
+        subject   = Subject.find(subject_id)
+        changeset = Thread.new_thread
         render conn, "new.html", changeset: changeset, subject: subject
     end
 
     def create(conn, %{"subject_id" => subject_id, "thread" => thread_params}) do
-        subject = SubjectCommands.find(subject_id)
+        subject = Subject.find(subject_id)
 
-        case ThreadCommands.create(subject, conn.assigns.user, thread_params) do
+        case Thread.create(subject, conn.assigns.user, thread_params) do
             {:ok, _thread} ->
                 conn
                 |> put_flash(:info, "successfully created a new thread")
@@ -39,7 +39,7 @@ defmodule MockForum.Web.ThreadController do
     end
 
     def update(conn, %{"subject_id" => subject_id, "id" => thread_id,  "thread" => thread}) do
-        case ThreadCommands.update(thread_id, thread) do
+        case Thread.update(thread_id, thread) do
             {:ok, _thread} ->
                 conn
                 |> put_flash(:info, "successfully edited the thread")
@@ -52,7 +52,7 @@ defmodule MockForum.Web.ThreadController do
     end
 
     def delete(conn, %{"subject_id" => subject_id, "id" => thread_id}) do  
-        ThreadCommands.delete!(thread_id)
+        Thread.delete!(thread_id)
 
         conn
         |> put_flash(:info, "Successfully deleted the thread")

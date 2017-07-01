@@ -19,10 +19,8 @@
             </p>
           </div>
           <div class="timeline-floor">
-            <p>
-                <%= link("Edit", to: thread_post_path(@conn, :edit, @thread, post), class: "btn btn-primary") %>
-                <%= link("Destroy", to: thread_post_path(@conn, :delete, @thread, post), method: :delete, class: "btn btn-danger") %>
-            </p>
+                <%= link("Edit", to: thread_post_path(@conn, :edit, @thread, post), class: "btn-sm btn-primary") %>
+                <%= link("Destroy", to: thread_post_path(@conn, :delete, @thread, post), method: :delete, class: "btn-sm btn-danger") %>
           </div>
         </div>
       </li>

@@ -1,5 +1,4 @@
-<h3><%= @subject.title %></h3> 
-<%= link("Edit", to: subject_path(@conn, :edit, @subject), class: "btn-sm btn-primary") %>
+<h3><%= @subject.title %></h3> <%= link("Edit", to: subject_path(@conn, :edit, @subject), class: "btn btn-primary") %>
 
 <br/><br/>
 
@@ -8,7 +7,7 @@
     <tr>
       <th></th>
       <th>Last Updated</th>
-      <th><%= link("New Thread", to: subject_thread_path(@conn, :new, @subject.id), class: "btn-sm btn-success") %></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -22,3 +21,6 @@
 
   </tbody>
 </table>
+
+<br/><br/>
+<%= link("New Thread", to: subject_thread_path(@conn, :new, @subject.id), class: "btn btn-success") %>
