@@ -5,7 +5,8 @@ defmodule MockForum.Web.SubjectFactory do
       def subject_factory do
         %MockForum.Subject{
           title: "My awesome subject",
-          description: "Still working on it!"
+          description: "Still working on it!",
+          category: build(:category)
         }
       end
     end

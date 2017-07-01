@@ -5,22 +5,22 @@ defmodule MockForum.Web.SubjectController do
 
     use MockForum.Web, :controller
 
-    alias MockForum.Commands.SubjectCommands
+    alias MockForum.Subject
 
     def index(conn, _params) do
-        render conn, "index.html", subjects: SubjectCommands.all(true)
+        render conn, "index.html", subjects: Subject.all(true)
     end
 
     def show(conn, %{"id" => subject_id}) do
-        render conn, "show.html", subject: SubjectCommands.find!(subject_id, :preload)
+        render conn, "show.html", subject: Subject.find!(subject_id, :preload)
     end
 
-    def new(conn, _params) do
-        render conn, "new.html", changeset: SubjectCommands.changeset
+    def new(conn, %{"category_id" => category_id}) do
+        render conn, "new.html", changeset: Subject.new_subject(category_id)
     end
 
     def create(conn, %{"subject" => subject_params}) do
-        case SubjectCommands.create(subject_params) do
+        case Subject.create(subject_params) do
             {:ok, _subject} ->
                 conn
                 |> put_flash(:info, "successfully created a new subject")
@@ -33,14 +33,14 @@ defmodule MockForum.Web.SubjectController do
     end
 
     def edit(conn, %{"id" => subject_id}) do
-        subject   = SubjectCommands.find(subject_id)
-        changeset = SubjectCommands.changeset(subject)
+        subject   = Subject.find(subject_id)
+        changeset = Subject.changeset(subject)
 
         render conn, "edit.html", changeset: changeset, subject: subject
     end
 
     def update(conn, %{"id" => subject_id, "subject" => subject}) do
-        case SubjectCommands.update(subject_id, subject) do
+        case Subject.update(subject_id, subject) do
             {:ok, _subject} ->
                 conn
                 |> put_flash(:info, "successfully edited the subject")
@@ -53,7 +53,7 @@ defmodule MockForum.Web.SubjectController do
     end
 
     def delete(conn, %{"id" => subject_id}) do  
-        SubjectCommands.delete!(subject_id)
+        Subject.delete!(subject_id)
 
         conn
         |> put_flash(:info, "Successfully deleted the subject")

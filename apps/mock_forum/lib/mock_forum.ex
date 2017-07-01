@@ -6,6 +6,9 @@ defmodule MockForum do
       use Ecto.Schema
       import Ecto
       import Ecto.Changeset
+      import Ecto.Query
+      import MockForum.Commands.StructCommands
+      alias MockForum.{Repo, User, Subject, Thread, Post, Category}
     end
   end
 

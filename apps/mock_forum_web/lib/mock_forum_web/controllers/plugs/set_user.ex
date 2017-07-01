@@ -6,7 +6,6 @@ defmodule MockForum.Web.Plugs.SetUser do
     import Plug.Conn
     import Phoenix.Controller
 
-    alias MockForum.Repo
     alias MockForum.User
 
     def init(_params) do
@@ -15,7 +14,7 @@ defmodule MockForum.Web.Plugs.SetUser do
     # Assigns the user object to connection if the user has signed in
     def call(conn, _params) do
         user_id = fetch_user_id(conn)
-        user    = if user_id, do: Repo.get(User, user_id), else: nil
+        user    = if user_id, do: User.find(user_id), else: nil
         assign(conn, :user, user)
     end
 

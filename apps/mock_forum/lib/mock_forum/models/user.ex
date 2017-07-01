@@ -2,6 +2,9 @@ defmodule MockForum.User do
     @moduledoc false
        
     use MockForum, :model
+    use MockForum.Commands.CrudCommands,
+        record_type:  User,
+        associations: [:posts]
 
     schema "users" do
         field :first_name, :string
@@ -15,7 +18,7 @@ defmodule MockForum.User do
         timestamps()
     end
 
-    def changeset(struct, params \\ %{}) do
+    def changeset(struct \\ %User{}, params \\ %{}) do
         struct
         |> cast(params, [:email, :token, :first_name, :last_name, :provider])
         |> validate_required([:email, :token, :first_name])

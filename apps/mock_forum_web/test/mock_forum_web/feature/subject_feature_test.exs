@@ -16,6 +16,8 @@ defmodule MockForum.Web.Feature.SubjectFeatureTest do
 
   describe "Creating a new subject" do
     test "User can create a new subject and view it", %{session: session} do
+       insert(:category)
+
       session
       |> visit("/")
       |> click(link("new subject"))
@@ -25,6 +27,8 @@ defmodule MockForum.Web.Feature.SubjectFeatureTest do
     end
 
     test "A subject name cannot be blank", %{session: session} do
+       insert(:category)
+       
       session
       |> visit("/")
       |> click(link("new subject"))

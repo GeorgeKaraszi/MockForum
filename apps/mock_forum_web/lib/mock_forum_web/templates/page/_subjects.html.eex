@@ -1,0 +1,8 @@
+<tbody>
+  <%= for subject <- @category.subjects do %>
+    <tr>
+      <td><%= link(subject.title, to: subject_path(@conn, :show, subject)) %></td>
+      <td><%= subject.updated_at %></td>
+    </tr>
+  <% end %>
+</tbody>

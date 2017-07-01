@@ -6,4 +6,5 @@ defmodule MockForum.Web.Factory do
   use MockForum.Web.ThreadFactory
   use MockForum.Web.PostFactory
   use MockForum.Web.UserFactory
+  use MockForum.Web.CategoryFactory
 end
