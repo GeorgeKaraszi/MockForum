@@ -43,7 +43,7 @@ defmodule MockForum.Web.Mixfile do
      {:ueberauth, "~> 0.4"},
      {:ueberauth_github, "~> 0.4"},
      {:envy, "~> 1.1.1"},
-     {:wallaby, "~> 0.17.0", only: :test},
+     {:wallaby, github: "keathley/wallaby", only: :test},
      {:ex_machina, github: "thoughtbot/ex_machina", only: :test}]
   end
 
