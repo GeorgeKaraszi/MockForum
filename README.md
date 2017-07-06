@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/GeorgeKaraszi/MockForum.svg?branch=master)](https://travis-ci.org/GeorgeKaraszi/MockForum)
+[![Build Status](https://travis-ci.org/GeorgeKaraszi/MockForum.svg?branch=master)](https://travis-ci.org/GeorgeKaraszi/MockForum) [![codebeat badge](https://codebeat.co/badges/80f35923-e25f-4ded-9871-cac1eb5f373c)](https://codebeat.co/projects/github-com-georgekaraszi-mockforum-master)
 
 [Demo](https://mock-forum.herokuapp.com/)
 
