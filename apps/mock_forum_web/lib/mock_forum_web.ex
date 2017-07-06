@@ -22,6 +22,7 @@ defmodule MockForum.Web do
       import Plug.Conn
       import MockForum.Web.Router.Helpers
       import MockForum.Web.Gettext
+      alias MockForum.Repo
     end
   end
 
@@ -35,6 +36,8 @@ defmodule MockForum.Web do
 
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
+
+      alias MockForum.Web.Helper.{DateFormatter}
 
       import MockForum.Web.Router.Helpers
       import MockForum.Web.ErrorHelpers

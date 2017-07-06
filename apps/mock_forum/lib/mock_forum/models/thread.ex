@@ -2,13 +2,13 @@ defmodule MockForum.Thread do
     @moduledoc false
 
     use MockForum, :model
-    use MockForum.Commands.CrudCommands, 
+    use MockForum.Commands.CrudCommands,
         record_type:  Thread,
         associations: [posts: :user]
 
     schema "threads" do
         belongs_to :subject, MockForum.Subject
-        has_many :posts, MockForum.Post, on_delete: :delete_all 
+        has_many :posts, MockForum.Post, on_delete: :delete_all
 
         field :title, :string
         timestamps()
@@ -33,6 +33,12 @@ defmodule MockForum.Thread do
         |> build_assoc(:threads)
         |> changeset(thread_params)
         |> Repo.insert
+    end
+
+    def latest_threads do
+        from t in Thread,
+        join: p in assoc(t, :posts),
+        preload: [posts: ^Post.latest_posts, posts: :user]
     end
 
     # Ensure that we can assign a user to the given post.

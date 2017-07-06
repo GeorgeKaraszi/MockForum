@@ -2,7 +2,7 @@ defmodule MockForum.Category do
     @moduledoc false
 
     use MockForum, :model
-    use MockForum.Commands.CrudCommands, 
+    use MockForum.Commands.CrudCommands,
         record_type:  Category,
         associations: [:subjects]
 
@@ -21,5 +21,9 @@ defmodule MockForum.Category do
 
     def create(category_params) do
      %Category{} |> changeset(category_params) |> Repo.insert
+    end
+
+    def preview_latest_threads do
+        from c in Category, preload: [subjects: ^Subject.latest_unqiue_threads]
     end
 end

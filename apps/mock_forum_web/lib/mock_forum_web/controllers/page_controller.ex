@@ -4,6 +4,7 @@ defmodule MockForum.Web.PageController do
   alias MockForum.Category
 
   def index(conn, _params) do
-    render conn, "index.html", categories: Category.all(true)
+    categories = Repo.all(Category.preview_latest_threads)
+    render conn, "index.html", categories: categories
   end
 end
