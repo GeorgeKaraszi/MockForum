@@ -3,7 +3,7 @@
     <h1 id="timeline"><%= @thread.title %></h1>
   </div>
 
-  <%= link("New post", to: thread_post_path(@conn, :new, @thread), class: "btn btn-success") %> 
+  <%= link("New post", to: thread_post_path(@conn, :new, @thread), class: "btn btn-success") %>
   <ul class="timeline">
   <%= for post <- @posts do %>
       <li>
@@ -16,6 +16,8 @@
           <div class="timeline-body">
             <p>
               <%= post.message %>
+              <br>
+              <strong><%= post.id %> </strong>
             </p>
           </div>
           <div class="timeline-floor">

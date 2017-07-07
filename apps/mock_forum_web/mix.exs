@@ -21,7 +21,7 @@ defmodule MockForum.Web.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {MockForum.Web.Application, []},
-     extra_applications: [:logger, :runtime_tools, :ueberauth, :ueberauth_github]]
+     extra_applications: [:logger, :runtime_tools, :ueberauth, :ueberauth_github, :timex]]
   end
 
   # Specifies which paths to compile per environment.
@@ -43,6 +43,7 @@ defmodule MockForum.Web.Mixfile do
      {:ueberauth, "~> 0.4"},
      {:ueberauth_github, "~> 0.4"},
      {:envy, "~> 1.1.1"},
+     {:timex, "~> 3.1"},
      {:wallaby, github: "keathley/wallaby", only: :test},
      {:ex_machina, github: "thoughtbot/ex_machina", only: :test}]
   end

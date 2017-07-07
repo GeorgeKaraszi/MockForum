@@ -13,11 +13,12 @@ defmodule MockForum.Commands.CrudCommands do
                def find!(record_id, :preload), do: record_id |> find! |> Repo.preload(unquote(associations))
                def find!(record_id),           do: unquote(record_type) |> Repo.get!(record_id)
                def find_by(query),             do: unquote(record_type) |> Repo.get_by(query)
+               def order_by_latest,            do: from q in unquote(record_type), order_by: [desc: q.inserted_at]
                def delete!(record_id),         do: record_id |> find! |> Repo.delete!
                def update(old_record_id, record) do
                    old_record_id |> find |> changeset(record) |> Repo.update
                 end
         end
     end
-    
+
 end

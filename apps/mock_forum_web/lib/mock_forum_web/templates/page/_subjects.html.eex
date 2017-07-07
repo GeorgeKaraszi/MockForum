@@ -2,7 +2,21 @@
   <%= for subject <- @category.subjects do %>
     <tr>
       <td><%= link(subject.title, to: subject_path(@conn, :show, subject)) %></td>
-      <td><%= subject.updated_at %></td>
+      <%= for thread <- subject.threads do %>
+        <td>
+          <ul>
+            <li>
+              <%= link(thread.title, to: thread_post_path(@conn, :index, thread)) %>
+            </li>
+            <%= for post <- thread.posts do %>
+                      <li>
+                        By <%= post.user.first_name %>
+                        (<%= DateFormatter.format_time_standard(post.inserted_at) %>)
+                      </li>
+            <% end %>
+          </ul>
+        </td>
+    <% end %>
     </tr>
   <% end %>
 </tbody>

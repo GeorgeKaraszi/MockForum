@@ -3,8 +3,8 @@
 <table class="table table-striped" cellspacing="0", width="100%">
   <thead>
     <tr>
-      <th></th>
-      <th></th>
+      <th>Forum</th>
+      <th>Last Post</th>
     </tr>
   </thead>
   <tbody>

@@ -5,7 +5,8 @@ defmodule MockForum.Web.PostFactory do
       def post_factory do
         %MockForum.Post{
           message: "My awesome message",
-          thread: build(:thread)
+          thread: build(:thread),
+          user: build(:user)
         }
       end
     end

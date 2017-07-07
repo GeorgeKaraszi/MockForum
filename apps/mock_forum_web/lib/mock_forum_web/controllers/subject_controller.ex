@@ -12,7 +12,8 @@ defmodule MockForum.Web.SubjectController do
     end
 
     def show(conn, %{"id" => subject_id}) do
-        render conn, "show.html", subject: Subject.find!(subject_id, :preload)
+        subject = Repo.one(Subject.order_by_latest_threads(subject_id))
+        render conn, "show.html", subject: subject
     end
 
     def new(conn, %{"category_id" => category_id}) do
@@ -52,7 +53,7 @@ defmodule MockForum.Web.SubjectController do
         end
     end
 
-    def delete(conn, %{"id" => subject_id}) do  
+    def delete(conn, %{"id" => subject_id}) do
         Subject.delete!(subject_id)
 
         conn

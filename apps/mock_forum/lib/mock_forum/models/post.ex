@@ -23,11 +23,18 @@ defmodule MockForum.Post do
     end
 
     def create(thread, user, post_params) do
-     %Post{} 
-        |> changeset(post_params) 
+     %Post{}
+        |> changeset(post_params)
         |> change
         |> put_assoc(:user, user, required: true)
         |> put_assoc(:thread, thread, required: true)
         |> Repo.insert
+    end
+
+    def latest_posts do
+        from p in Post,
+        order_by: [desc: p.inserted_at],
+        distinct: p.thread_id,
+        preload: [:user]
     end
 end
