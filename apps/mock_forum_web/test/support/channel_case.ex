@@ -15,6 +15,9 @@ defmodule MockForum.Web.ChannelCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL.Sandbox
+  alias MockForum.Repo
+
   using do
     quote do
       # Import conveniences for testing with channels
@@ -25,11 +28,10 @@ defmodule MockForum.Web.ChannelCase do
     end
   end
 
-
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(MockForum.Repo)
+    :ok = Sandbox.checkout(Repo)
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(MockForum.Repo, {:shared, self()})
+      Sandbox.mode(Repo, {:shared, self()})
     end
     :ok
   end

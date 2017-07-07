@@ -11,5 +11,3 @@ File.rm_rf("../../tmp/screenshots")
 Application.put_env(:wallaby, :base_url, MockForum.Web.Endpoint.url)
 Application.put_env(:wallaby, :screenshot_dir, "../../tmp/screenshots")
 Application.put_env(:wallaby, :screenshot_on_failure, true)
-
-

@@ -1,4 +1,6 @@
 defmodule MockForum.Web.Feature.ThreadFeatureTest do
+  @moduledoc false
+
   use MockForum.Web.FeatureCase, async: true
 
   import MockForum.Web.Factory

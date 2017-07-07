@@ -45,7 +45,6 @@ defmodule MockForum.Web.AuthController do
         end
     end
 
-
     defp update_or_insert_user(changeset) do
         # case Repo.get_by(User, email: changeset.changes.email) do
         case User.find_by(email: changeset.changes.email) do

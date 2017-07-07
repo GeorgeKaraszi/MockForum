@@ -1,4 +1,6 @@
 defmodule MockForum.Web.Feature.SubjectFeatureTest do
+  @moduledoc false
+
   use MockForum.Web.FeatureCase, async: true
 
   import MockForum.Web.Factory
@@ -28,7 +30,7 @@ defmodule MockForum.Web.Feature.SubjectFeatureTest do
 
     test "A subject name cannot be blank", %{session: session} do
        insert(:category)
-       
+
       session
       |> visit("/")
       |> click(link("new subject"))

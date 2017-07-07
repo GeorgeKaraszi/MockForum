@@ -14,6 +14,9 @@ defmodule MockForum.DataCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.{Changeset, Adapters.SQL.Sandbox}
+  alias MockForum.Repo
+
   using do
     quote do
       alias MockForum.Repo
@@ -26,10 +29,10 @@ defmodule MockForum.DataCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(MockForum.Repo)
+    :ok = Sandbox.checkout(Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(MockForum.Repo, {:shared, self()})
+      Sandbox.mode(Repo, {:shared, self()})
     end
 
     :ok
@@ -44,7 +47,7 @@ defmodule MockForum.DataCase do
 
   """
   def errors_on(changeset) do
-    Ecto.Changeset.traverse_errors(changeset, fn {message, opts} ->
+    Changeset.traverse_errors(changeset, fn {message, opts} ->
       Enum.reduce(opts, message, fn {key, value}, acc ->
         String.replace(acc, "%{#{key}}", to_string(value))
       end)

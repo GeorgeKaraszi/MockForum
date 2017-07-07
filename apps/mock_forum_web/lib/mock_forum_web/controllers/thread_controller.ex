@@ -6,7 +6,7 @@ defmodule MockForum.Web.ThreadController do
     use MockForum.Web, :controller
 
     plug MockForum.Web.Plugs.RequireAuth when action in [:new, :create, :edit, :update]
-    
+
     alias MockForum.{Thread, Subject}
 
     def index(conn, _params) do
@@ -51,7 +51,7 @@ defmodule MockForum.Web.ThreadController do
         end
     end
 
-    def delete(conn, %{"subject_id" => subject_id, "id" => thread_id}) do  
+    def delete(conn, %{"subject_id" => subject_id, "id" => thread_id}) do
         Thread.delete!(thread_id)
 
         conn
