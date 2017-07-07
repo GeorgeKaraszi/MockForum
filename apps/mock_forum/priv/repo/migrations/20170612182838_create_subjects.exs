@@ -1,6 +1,6 @@
 defmodule MockForum.Repo.Migrations.CreateSubjects do
   @moduledoc false
-  
+
   use Ecto.Migration
 
   def change do

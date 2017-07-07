@@ -1,6 +1,6 @@
 defmodule MockForum do
   @moduledoc false
-  
+
   def model do
     quote do
       use Ecto.Schema

@@ -1,7 +1,6 @@
 defmodule MockForum.Web.Endpoint do
   use Phoenix.Endpoint, otp_app: :mock_forum_web
 
-
    if Application.get_env(:mock_forum_web, :sql_sandbox) do
     plug Phoenix.Ecto.SQL.Sandbox
   end

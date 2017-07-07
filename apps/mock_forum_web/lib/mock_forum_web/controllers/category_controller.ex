@@ -52,7 +52,7 @@ defmodule MockForum.Web.CategoryController do
         end
     end
 
-    def delete(conn, %{"id" => category_id}) do  
+    def delete(conn, %{"id" => category_id}) do
         Category.delete!(category_id)
 
         conn

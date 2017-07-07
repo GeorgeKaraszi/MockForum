@@ -20,7 +20,6 @@ config :mock_forum_web, MockForum.Web.Endpoint,
   cache_static_manifest: "priv/static/cache_manifest.json",
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
-
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

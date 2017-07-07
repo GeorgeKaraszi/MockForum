@@ -44,6 +44,7 @@ defmodule MockForum.Thread do
     # Ensure that we can assign a user to the given post.
 
     defp assign_user(params, %{id: id}) do
-        assign_nested_struct(params, "posts", "user_id", id, Map.keys(params["posts"]))
+        params
+        |> assign_nested_struct("posts", "user_id", id, Map.keys(params["posts"]))
     end
 end

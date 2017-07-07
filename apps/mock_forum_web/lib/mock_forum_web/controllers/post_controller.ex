@@ -5,7 +5,7 @@ defmodule MockForum.Web.PostController do
 
     use MockForum.Web, :controller
     plug MockForum.Web.Plugs.RequireAuth when action in [:new, :create, :edit, :update]
-    
+
     alias MockForum.{Thread, Post}
 
     def index(conn, %{"thread_id" => thread_id}) do

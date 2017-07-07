@@ -1,6 +1,6 @@
 defmodule MockForum.User do
     @moduledoc false
-       
+
     use MockForum, :model
     use MockForum.Commands.CrudCommands,
         record_type:  User,
@@ -12,7 +12,7 @@ defmodule MockForum.User do
         field :email, :string
         field :token, :string
         field :provider, :string
-        
+
         has_many :posts, MockForum.Post, on_delete: :delete_all
 
         timestamps()
