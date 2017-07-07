@@ -33,7 +33,7 @@ defmodule MockForum.Subject do
 
     def order_by_latest_threads(subject_id) do
         from s in Subject,
-        join: t in assoc(s, :threads),
+        left_join: t in assoc(s, :threads),
         left_join: p in assoc(t, :posts),
         where: [id: ^subject_id],
         order_by: [desc: p.inserted_at],

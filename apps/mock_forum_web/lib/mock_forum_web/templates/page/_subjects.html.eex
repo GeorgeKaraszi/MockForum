@@ -1,20 +1,22 @@
 <tbody>
   <%= for subject <- @category.subjects do %>
-    <%= for thread <- subject.threads do %>
-      <%= for post <- thread.posts do %>
-        <tr>
-            <td><%= link(subject.title, to: subject_path(@conn, :show, subject)) %></td>
-            <td>
-            <ul>
-                <li> <%= link(thread.title, to: thread_post_path(@conn, :index, thread)) %></li>
-                <li>
-                  By <%= post.user.first_name %>
-                  (<%= DateFormatter.format_time_standard(post.inserted_at) %>)
-                </li>
-            </ul>
-            </td>
-        </tr>
-      <% end %>
+    <tr>
+      <td><%= link(subject.title, to: subject_path(@conn, :show, subject)) %></td>
+      <%= for thread <- subject.threads do %>
+        <td>
+          <ul>
+            <li>
+              <%= link(thread.title, to: thread_post_path(@conn, :index, thread)) %>
+            </li>
+            <%= for post <- thread.posts do %>
+                      <li>
+                        By <%= post.user.first_name %>
+                        (<%= DateFormatter.format_time_standard(post.inserted_at) %>)
+                      </li>
+            <% end %>
+          </ul>
+        </td>
     <% end %>
+    </tr>
   <% end %>
 </tbody>

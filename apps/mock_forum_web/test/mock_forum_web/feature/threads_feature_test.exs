@@ -57,10 +57,11 @@ defmodule MockForum.Web.Feature.ThreadFeatureTest do
 
   describe "Viewing a new thread" do
     test "A subject can be clicked on linking to topics", %{session: session} do
-      thread = insert(:thread)
+      post = insert(:post)
+
       session
-      |> visit("/subject/#{thread.subject_id}")
-      |> click(link(thread.title))
+      |> visit("/subject/#{post.thread.subject_id}")
+      |> click(link(post.thread.title))
       |> assert_has(link("New post"))
     end
   end
