@@ -8,7 +8,7 @@ defmodule MockForum.Category do
 
     schema "categories" do
         field :title, :string
-        has_many :subjects, MockForum.Subject
+        has_many :subjects, MockForum.Subject, on_delete: :delete_all
 
         timestamps()
     end
