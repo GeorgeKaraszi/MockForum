@@ -8,9 +8,14 @@
 				<li class="current_page_item">
                      <%= link("Homepage", to: page_path(@conn, :index), accesskey: "1") %>
                 </li>
+				<%= if @conn.assigns[:user] do %>
+					<li>
+						<%= link("Profile", to: profile_path(@conn, :profile), accesskey: "2") %>
+					</li>
+				<% end %>
 				<li>
                     <%= if @conn.assigns[:user] do %>
-                        <%= link("Signout", to: auth_path(@conn, :signout) , accesskey: "2") %>
+                        <%= link("Signout", to: auth_path(@conn, :signout) , accesskey: "3") %>
                     <% else %>
                         <%= link("Login With Github", to: auth_path(@conn, :request, "github") , accesskey: "2") %>
                     <% end %>

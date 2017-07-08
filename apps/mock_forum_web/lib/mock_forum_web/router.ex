@@ -22,6 +22,8 @@ defmodule MockForum.Web.Router do
     resources "/subject", SubjectController do
           resources "/thread", ThreadController
     end
+
+    get "/profile", ProfileController, :profile
   end
 
   scope "/thread/:thread_id", MockForum.Web, as: :thread do
