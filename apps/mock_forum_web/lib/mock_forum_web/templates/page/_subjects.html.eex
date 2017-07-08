@@ -16,6 +16,7 @@
             <% end %>
           </ul>
         </td>
+        <td><%= link("Delete", to: subject_path(@conn, :delete, subject), method: :delete, class: "btn-sm btn-danger") %></td>
     <% end %>
     </tr>
   <% end %>

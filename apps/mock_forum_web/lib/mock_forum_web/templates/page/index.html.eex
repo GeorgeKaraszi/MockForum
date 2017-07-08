@@ -13,7 +13,9 @@
         <td><strong><%= category.title %></strong></td>
         <td>
             <%= link("new subject", to: subject_path(@conn, :new, category_id: category.id), class: "btn-sm btn-success")  %>
-          </td>
+            <%= link("Delete Category", to: category_path(@conn, :delete, category), method: :delete, class: "btn-sm btn-danger") %>
+        </td>
+        <td></td>
         <%= render MockForum.Web.PageView, "_subjects.html", conn: @conn, category: category %>
       </tr>
   <% end %>

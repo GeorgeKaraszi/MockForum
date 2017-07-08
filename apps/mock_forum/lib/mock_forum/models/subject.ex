@@ -9,6 +9,7 @@ defmodule MockForum.Subject do
     schema "subjects" do
         belongs_to :category, MockForum.Category
         has_many :threads, MockForum.Thread, on_delete: :delete_all
+        has_many :thread_posts, through: [:threads, :posts], on_delete: :delete_all
 
         field :title, :string
         field :description, :string
