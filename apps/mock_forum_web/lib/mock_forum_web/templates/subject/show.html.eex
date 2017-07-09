@@ -16,11 +16,11 @@
       <%= for post <- thread.posts do %>
         <tr>
           <td><%= link(thread.title, to: thread_post_path(@conn, :index, thread)) %></td>
-          <td><%= DateFormatter.format_time_standard(post.updated_at) %></td>
+          <td><%= format_time_standard(post.updated_at) %></td>
           <td>
               <ul>
                   <li>By <%= post.user.first_name %></li>
-                  <li><%= DateFormatter.format_time_standard(post.inserted_at) %></li>
+                  <li><%= format_time_standard(post.inserted_at) %></li>
               </ul>
           </td>
           <td><%= link("Delete", to: subject_thread_path(@conn, :delete, @subject, thread), method: :delete) %></td>

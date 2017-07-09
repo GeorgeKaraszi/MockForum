@@ -1,4 +1,4 @@
-defmodule MockForum.Web.Helper.DateFormatter do
+defmodule MockForum.Web.Helper.DateHelpers do
     @moduledoc false
     use Timex
 

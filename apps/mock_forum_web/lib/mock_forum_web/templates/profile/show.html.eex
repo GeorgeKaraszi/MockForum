@@ -1,0 +1,2 @@
+<%= link "Edit Profile", to: profile_path(@conn, :edit), class: "btn-sm btn-success" %>
+<%= render MockForum.Web.ProfileView, "_basic_profile.html", user: @user %>

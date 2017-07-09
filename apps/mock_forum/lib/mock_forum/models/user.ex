@@ -13,6 +13,10 @@ defmodule MockForum.User do
         field :token, :string
         field :provider, :string
 
+        # Virtual / Decorator fields
+        field :profile_name, :string, virtual: true
+        field :post_count, :integer, virtual: true
+
         has_many :posts, MockForum.Post, on_delete: :delete_all
 
         timestamps()

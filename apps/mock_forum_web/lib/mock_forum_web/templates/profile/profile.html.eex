@@ -1,0 +1,1 @@
+<%= render MockForum.Web.ProfileView, "_basic_profile.html", user: @user %>
