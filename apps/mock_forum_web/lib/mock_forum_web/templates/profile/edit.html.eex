@@ -1,0 +1,12 @@
+
+<%= form_for @changeset, profile_path(@conn, :update), fn f -> %>
+    <div class="form-group">
+        <%= textarea f, :first_name, placeholder: "Message", class: "form-control" %>
+        <%= error_tag f, :first_name %>
+
+        <%= textarea f, :last_name, placeholder: "Message", class: "form-control" %>
+        <%= error_tag f, :first_name %>
+
+        <%= submit "Submit", class: "btn btn-primary" %>
+    </div>
+<% end %>

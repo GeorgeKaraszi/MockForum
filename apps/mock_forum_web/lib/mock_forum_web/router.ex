@@ -23,7 +23,9 @@ defmodule MockForum.Web.Router do
           resources "/thread", ThreadController
     end
 
-    get "/profile", ProfileController, :profile
+    resources "/profile", ProfileController, except: [:delete], singleton: true
+    get "/profile/:id", ProfileController, :profile
+
   end
 
   scope "/thread/:thread_id", MockForum.Web, as: :thread do

@@ -10,7 +10,7 @@
                 </li>
 				<%= if @conn.assigns[:user] do %>
 					<li>
-						<%= link("Profile", to: profile_path(@conn, :profile), accesskey: "2") %>
+						<%= link("Profile", to: profile_path(@conn, :show), accesskey: "2") %>
 					</li>
 				<% end %>
 				<li>

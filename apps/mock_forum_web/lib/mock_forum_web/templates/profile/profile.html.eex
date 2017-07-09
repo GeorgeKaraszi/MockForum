@@ -1,6 +1,1 @@
-<ul>
-    <li>Name: <%= @user.profile_name %></li>
-    <li>Email: <%= @user.email %></li>
-    <li>Authorized By: <%= @user.provider %></li>
-    <li>Has posted: <%= @user.post_count %> time/s</li>
-</ul>
+<%= render MockForum.Web.ProfileView, "_basic_profile.html", user: @user %>

@@ -37,11 +37,10 @@ defmodule MockForum.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      alias MockForum.Web.Helper.{DateFormatter}
-
       import MockForum.Web.Router.Helpers
       import MockForum.Web.ErrorHelpers
       import MockForum.Web.Gettext
+      import MockForum.Web.Helper.{DateHelpers}
     end
   end
 

@@ -11,7 +11,7 @@
             <%= for post <- thread.posts do %>
                       <li>
                         By <%= post.user.first_name %>
-                        (<%= DateFormatter.format_time_standard(post.inserted_at) %>)
+                        (<%= format_time_standard(post.inserted_at) %>)
                       </li>
             <% end %>
           </ul>
