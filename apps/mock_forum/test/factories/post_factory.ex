@@ -1,4 +1,4 @@
-defmodule MockForum.Web.PostFactory do
+defmodule MockForum.PostFactory do
     @moduledoc false
   defmacro __using__(_opts) do
     quote do

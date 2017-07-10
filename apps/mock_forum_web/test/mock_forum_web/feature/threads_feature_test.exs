@@ -2,8 +2,6 @@ defmodule MockForum.Web.Feature.ThreadFeatureTest do
   @moduledoc false
 
   use MockForum.Web.FeatureCase, async: true
-
-  import MockForum.Web.Factory
   import Wallaby.Query, only: [text_field: 1, link: 1, button: 1, css: 2]
 
   setup %{session: session} do

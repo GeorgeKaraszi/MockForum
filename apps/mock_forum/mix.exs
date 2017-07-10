@@ -24,7 +24,7 @@ defmodule MockForum.Mixfile do
   end
 
   # Specifies which paths to compile per environment.
-  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(:test), do: ["lib", "test/support", "test/factories"]
   defp elixirc_paths(_),     do: ["lib"]
 
   # Specifies your project dependencies.
@@ -32,7 +32,8 @@ defmodule MockForum.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [{:postgrex, ">= 0.0.0"},
-     {:ecto, "~> 2.1"}]
+     {:ecto, "~> 2.1"},
+     {:ex_machina, github: "thoughtbot/ex_machina", only: :test}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

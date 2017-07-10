@@ -12,6 +12,7 @@ defmodule MockForum.Web.FeatureCase do
       import Ecto.Query
 
       import MockForum.Web.Router.Helpers
+      import MockForum.Factory
     end
   end
 

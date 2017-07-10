@@ -23,5 +23,5 @@ defmodule MockForum.Umbrella.Mixfile do
     [
       {:credo, "~> 0.8", only: [:dev, :test], runtime: false}
     ]
-  end 
+  end
 end

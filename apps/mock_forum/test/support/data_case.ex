@@ -24,6 +24,7 @@ defmodule MockForum.DataCase do
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
+      import MockForum.Factory
       import MockForum.DataCase
     end
   end
