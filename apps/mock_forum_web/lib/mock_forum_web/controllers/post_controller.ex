@@ -9,7 +9,7 @@ defmodule MockForum.Web.PostController do
     alias MockForum.{Thread, Post}
 
     def index(conn, %{"thread_id" => thread_id}) do
-        thread = Thread.find(thread_id, :preload)
+        thread = Thread.find!(thread_id, :preload)
         posts  = thread.posts
         render conn, "index.html", thread: thread, posts: posts
     end
@@ -34,7 +34,7 @@ defmodule MockForum.Web.PostController do
     end
 
     def edit(conn, %{"thread_id" => thread_id, "id" => post_id}) do
-        post      = Post.find(post_id)
+        post      = Post.find!(post_id)
         changeset = Post.changeset(post)
 
         render conn, "edit.html", changeset: changeset, post: post, thread: thread_id

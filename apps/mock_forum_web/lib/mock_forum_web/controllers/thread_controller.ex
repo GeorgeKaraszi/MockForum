@@ -9,28 +9,24 @@ defmodule MockForum.Web.ThreadController do
 
     alias MockForum.{Thread, Subject}
 
-    def index(conn, _params) do
-        render conn, "index.html", subjects: Thread.all
-    end
-
     def show(conn, %{"id" => thread_id}) do
         redirect(conn, to: thread_post_path(conn, :index, thread_id))
     end
 
     def new(conn, %{"subject_id" => subject_id}) do
-        subject   = Subject.find(subject_id)
+        subject   = Subject.find!(subject_id)
         changeset = Thread.new_thread
         render conn, "new.html", changeset: changeset, subject: subject
     end
 
     def create(conn, %{"subject_id" => subject_id, "thread" => thread_params}) do
-        subject = Subject.find(subject_id)
+        subject = Subject.find!(subject_id)
 
         case Thread.create(subject, conn.assigns.user, thread_params) do
-            {:ok, _thread} ->
+            {:ok, thread} ->
                 conn
                 |> put_flash(:info, "successfully created a new thread")
-                |> redirect(to: subject_path(conn, :show, subject))
+                |> redirect(to: thread_post_path(conn, :index, thread))
             {:error, changeset} ->
                 conn
                 |> put_flash(:error, "Failed to create new thread")
