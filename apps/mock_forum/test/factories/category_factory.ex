@@ -1,10 +1,13 @@
 defmodule MockForum.CategoryFactory do
-    @moduledoc false
+
+  @moduledoc false
+  alias Faker.Company
+
   defmacro __using__(_opts) do
     quote do
       def category_factory do
         %MockForum.Category{
-          title: "My awesome Category"
+          title: Company.catch_phrase
         }
       end
     end
