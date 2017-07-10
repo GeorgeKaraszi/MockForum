@@ -12,7 +12,10 @@ defmodule MockForum.Web.SubjectController do
     end
 
     def show(conn, %{"id" => subject_id}) do
-        subject = Repo.one(Subject.order_by_latest_threads(subject_id))
+        subject =
+            subject_id
+            |> Subject.order_by_latest_threads
+            |> Repo.one!
         render conn, "show.html", subject: subject
     end
 
@@ -34,7 +37,7 @@ defmodule MockForum.Web.SubjectController do
     end
 
     def edit(conn, %{"id" => subject_id}) do
-        subject   = Subject.find(subject_id)
+        subject   = Subject.find!(subject_id)
         changeset = Subject.changeset(subject)
 
         render conn, "edit.html", changeset: changeset, subject: subject

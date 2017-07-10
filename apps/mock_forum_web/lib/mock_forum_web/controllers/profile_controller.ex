@@ -9,12 +9,12 @@ defmodule MockForum.Web.ProfileController do
     alias MockForum.{User, UserDecorator}
 
     def profile(conn, %{"id" => user_id}) do
-        case User.find(user_id) do
-            nil ->
-                send_resp(conn, 404, "Could not find user")
-            record ->
-                render(conn, "profile.html", user: UserDecorator.decorate(record))
-        end
+        user =
+            user_id
+            |> User.find!
+            |> UserDecorator.decorate
+
+        render(conn, "profile.html", user: user)
     end
 
     def show(conn, _params) do
@@ -23,13 +23,13 @@ defmodule MockForum.Web.ProfileController do
     end
 
     def edit(conn, _params) do
-        changeset = conn.assigns.user |> User.changeset
+        changeset = User.changeset(conn.assigns.user)
         render conn, "edit.html", changeset: changeset
     end
 
     def update(conn, %{"user" => user}) do
         case User.update(conn.assigns.user.id, user) do
-            {:ok, _post} ->
+            {:ok, _user} ->
                 conn
                 |> put_flash(:info, "Successfully updated your profile")
                 |> redirect(to: profile_path(conn, :show))

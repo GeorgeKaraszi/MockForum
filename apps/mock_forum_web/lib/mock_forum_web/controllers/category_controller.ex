@@ -7,10 +7,6 @@ defmodule MockForum.Web.CategoryController do
 
     alias MockForum.Category
 
-    def index(conn, _params) do
-        redirect(conn, to: page_path(conn, :index))
-    end
-
     def show(conn, %{"id" => category_id}) do
         render conn, "show.html", category: Category.find!(category_id, :preload)
     end
