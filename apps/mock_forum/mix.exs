@@ -34,7 +34,7 @@ defmodule MockForum.Mixfile do
     [{:postgrex, ">= 0.0.0"},
      {:ecto, "~> 2.1"},
      {:ex_machina, github: "thoughtbot/ex_machina", only: :test},
-     {:faker, "~> 0.8", only: :test}]
+     {:faker, "~> 0.8", only: :test},
      {:arc_ecto, "~> 0.7.0"},
      {:ex_machina, github: "thoughtbot/ex_machina", only: :test}]
   end

@@ -24,7 +24,7 @@ defmodule MockForum.Web.Mixfile do
       mod: {MockForum.Web.Application, []},
       extra_applications: [
         :logger, :runtime_tools, :ueberauth, :ueberauth_github,
-        :timex, :ex_aws, :hackney, :poison
+        :timex, :ex_aws
       ]
     ]
   end
@@ -51,8 +51,6 @@ defmodule MockForum.Web.Mixfile do
      {:timex, "~> 3.1"},
      {:arc, "~> 0.8.0"},
      {:ex_aws, "~> 1.1"},
-     {:hackney, "~> 1.6"},
-     {:poison, "~> 3.1"},
      {:sweet_xml, "~> 0.6"},
      {:wallaby, github: "keathley/wallaby", only: :test},
      {:ex_machina, github: "thoughtbot/ex_machina", only: :test}]
