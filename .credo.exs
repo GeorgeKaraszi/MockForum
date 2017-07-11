@@ -33,7 +33,7 @@
       # Credo automatically checks for updates, like e.g. Hex does.
       # You can disable this behaviour below:
       #
-      check_for_updates: true,
+      check_for_updates: false,
       #
       # If you want to enforce a style guide and need a more traditional linting
       # experience, you can change `strict` to `true` below:

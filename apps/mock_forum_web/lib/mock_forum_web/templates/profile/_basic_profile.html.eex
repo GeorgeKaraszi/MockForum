@@ -1,4 +1,5 @@
 <ul>
+    <li><%= profile_icon(@user) %></li>
     <li>Name: <%= @user.profile_name %></li>
     <li>Email: <%= @user.email %></li>
     <li>Authorized By: <%= @user.provider %></li>
