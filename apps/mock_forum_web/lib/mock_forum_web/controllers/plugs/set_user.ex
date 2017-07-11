@@ -4,7 +4,6 @@ defmodule MockForum.Web.Plugs.SetUser do
         Otherwise set it to nil if no user is signed in.
     """
     import Plug.Conn
-    import Phoenix.Controller
 
     alias MockForum.User
 

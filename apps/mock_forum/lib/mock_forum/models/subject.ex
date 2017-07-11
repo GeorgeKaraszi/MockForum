@@ -32,6 +32,7 @@ defmodule MockForum.Subject do
         %Subject{} |> changeset(subject) |> Repo.insert
     end
 
+    def order_by_latest_threads(%{id: subject_id}), do: order_by_latest_threads(subject_id)
     def order_by_latest_threads(subject_id) do
         from s in Subject,
         left_join: t in assoc(s, :threads),

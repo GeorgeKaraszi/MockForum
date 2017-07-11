@@ -1,4 +1,5 @@
 defmodule MockForum.Web.PageControllerTest do
+  @moduledoc false
   use MockForum.Web.ConnCase
 
   test "GET /", %{conn: conn} do

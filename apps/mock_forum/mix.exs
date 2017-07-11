@@ -33,7 +33,8 @@ defmodule MockForum.Mixfile do
   defp deps do
     [{:postgrex, ">= 0.0.0"},
      {:ecto, "~> 2.1"},
-     {:ex_machina, github: "thoughtbot/ex_machina", only: :test}]
+     {:ex_machina, github: "thoughtbot/ex_machina", only: :test},
+     {:faker, "~> 0.8", only: :test}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
