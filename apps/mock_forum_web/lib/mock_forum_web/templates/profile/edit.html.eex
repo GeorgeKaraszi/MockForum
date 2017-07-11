@@ -1,9 +1,16 @@
 
-<%= form_for @changeset, profile_path(@conn, :update), fn f -> %>
+<%= form_for @changeset, profile_path(@conn, :update), [multipart: true], fn f -> %>
+  <div class="form-group">
+    <label>Photo</label>
+    <%= file_input f, :avatar, class: "form-control" %>
+    <%= error_tag f, :avatar %>
+  </div>
+
     <div class="form-group">
         <%= textarea f, :first_name, placeholder: "Message", class: "form-control" %>
         <%= error_tag f, :first_name %>
-
+    </div>
+    <div class="form-group">
         <%= textarea f, :last_name, placeholder: "Message", class: "form-control" %>
         <%= error_tag f, :first_name %>
 

@@ -2,6 +2,7 @@ defmodule MockForum.User do
     @moduledoc false
 
     use MockForum, :model
+    use Arc.Ecto.Schema
     use MockForum.Commands.CrudCommands,
         record_type:  User,
         associations: [:posts]
@@ -12,6 +13,7 @@ defmodule MockForum.User do
         field :email, :string
         field :token, :string
         field :provider, :string
+        field :avatar, Avatar.Type
 
         # Virtual / Decorator fields
         field :profile_name, :string, virtual: true
@@ -25,6 +27,7 @@ defmodule MockForum.User do
     def changeset(struct \\ %User{}, params \\ %{}) do
         struct
         |> cast(params, [:email, :token, :first_name, :last_name, :provider])
+        |> cast_attachments(params, [:avatar])
         |> validate_required([:email, :token, :first_name])
     end
 end

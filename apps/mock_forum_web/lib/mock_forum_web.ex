@@ -40,7 +40,7 @@ defmodule MockForum.Web do
       import MockForum.Web.Router.Helpers
       import MockForum.Web.ErrorHelpers
       import MockForum.Web.Gettext
-      import MockForum.Web.Helper.{DateHelpers}
+      import MockForum.Web.Helper.{DateHelpers, ImageHelpers}
     end
   end
 

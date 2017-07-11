@@ -17,6 +17,10 @@ defmodule MockForum.Web.ProfileController do
         render(conn, "profile.html", user: user)
     end
 
+    def avatar(conn, _params) do
+        render(conn, "show.html", user: conn.assigns.user)
+    end
+
     def show(conn, _params) do
         user = UserDecorator.decorate(conn.assigns.user)
         render conn, "show.html", user: user

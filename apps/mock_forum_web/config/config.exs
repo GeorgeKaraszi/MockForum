@@ -35,6 +35,15 @@ config :ueberauth, Ueberauth,
     github: {Ueberauth.Strategy.Github, []}
   ]
 
-  config :ueberauth, Ueberauth.Strategy.Github.OAuth,
-    client_id: System.get_env("GITHUB_CLIENT_ID"),
-    client_secret: System.get_env("GITHUB_CLIENT_SECRET")
+config :ueberauth, Ueberauth.Strategy.Github.OAuth,
+  client_id: System.get_env("GITHUB_CLIENT_ID"),
+  client_secret: System.get_env("GITHUB_CLIENT_SECRET")
+
+config :ex_aws,
+  access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
+  secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY")
+
+config :arc,
+  storage: Arc.Storage.S3, # or Arc.Storage.Local
+  bucket: System.get_env("AWS_BUCKET_NAME"),
+  virtual_host: true

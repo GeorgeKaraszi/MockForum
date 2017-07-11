@@ -24,6 +24,7 @@ defmodule MockForum.Web.Router do
     end
 
     resources "/profile", ProfileController, except: [:delete], singleton: true
+    patch "/profile/avatar", ProfileController, :avatar
     get "/profile/:id", ProfileController, :profile
 
   end
