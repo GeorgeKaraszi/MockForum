@@ -17,10 +17,6 @@ defmodule MockForum.Web.ProfileController do
         render(conn, "profile.html", user: user)
     end
 
-    def avatar(conn, _params) do
-        render(conn, "show.html", user: conn.assigns.user)
-    end
-
     def show(conn, _params) do
         user = UserDecorator.decorate(conn.assigns.user)
         render conn, "show.html", user: user
@@ -38,6 +34,9 @@ defmodule MockForum.Web.ProfileController do
                 |> put_flash(:info, "Successfully updated your profile")
                 |> redirect(to: profile_path(conn, :show))
             {:error, changeset} ->
+                IO.puts "XXXXXXXXXXXXXXX ERROR XXXXXXXXXXXXXXX"
+                IO.inspect changeset
+                IO.puts "XXXXXXXXXXXXXXX ERROR XXXXXXXXXXXXXXX"
                 conn
                 |> put_flash(:error, "There was an error with editing your profile")
                 |> render("edit.html", changeset: changeset)
