@@ -34,9 +34,6 @@ defmodule MockForum.Web.ProfileController do
                 |> put_flash(:info, "Successfully updated your profile")
                 |> redirect(to: profile_path(conn, :show))
             {:error, changeset} ->
-                IO.puts "XXXXXXXXXXXXXXX ERROR XXXXXXXXXXXXXXX"
-                IO.inspect changeset
-                IO.puts "XXXXXXXXXXXXXXX ERROR XXXXXXXXXXXXXXX"
                 conn
                 |> put_flash(:error, "There was an error with editing your profile")
                 |> render("edit.html", changeset: changeset)

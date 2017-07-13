@@ -1,7 +1,7 @@
 /_build
 /cover
 /deps
-erl_crash.dump
+*.dump
 *.ez
 .env.dev
 .env.test

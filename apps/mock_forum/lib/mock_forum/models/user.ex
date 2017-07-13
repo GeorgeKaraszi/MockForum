@@ -1,8 +1,8 @@
 defmodule MockForum.User do
     @moduledoc false
 
-    use MockForum, :model
     use Arc.Ecto.Schema
+    use MockForum, :model
     use MockForum.Commands.CrudCommands,
         record_type:  User,
         associations: [:posts]
