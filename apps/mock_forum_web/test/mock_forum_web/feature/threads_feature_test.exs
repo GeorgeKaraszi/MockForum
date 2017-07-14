@@ -16,10 +16,10 @@ defmodule MockForum.Web.Feature.ThreadFeatureTest do
 
   describe "Creating a new thread" do
     test "A thread name cannot be blank", %{session: session} do
-        subject = insert(:subject)
+        category = insert(:category)
 
         session
-        |> visit("/subject/#{subject.id}")
+        |> visit("/category/#{category.id}")
         |> click(link("New Thread"))
         |> fill_in(text_field("thread_posts_0_message"), with: "Here is my thread body")
         |> click(button("Submit"))
@@ -30,9 +30,9 @@ defmodule MockForum.Web.Feature.ThreadFeatureTest do
     end
 
     test "A thread message cannot be blank", %{session: session} do
-        subject = insert(:subject)
+        category = insert(:category)
         session
-        |> visit("/subject/#{subject.id}")
+        |> visit("/category/#{category.id}")
         |> click(link("New Thread"))
         |> fill_in(text_field("thread_title"), with: "Here is my thread title")
         |> click(button("Submit"))
@@ -48,7 +48,7 @@ defmodule MockForum.Web.Feature.ThreadFeatureTest do
       post = insert(:post)
 
       session
-      |> visit("/subject/#{post.thread.subject_id}")
+      |> visit("/category/#{post.thread.category_id}")
       |> click(link(post.thread.title))
       |> assert_has(link("New post"))
     end
