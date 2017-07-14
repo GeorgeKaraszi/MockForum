@@ -3,23 +3,24 @@
 <table class="table table-striped" cellspacing="0", width="100%">
   <thead>
     <tr>
-      <th>Forum</th>
+      <th>Category</th>
       <th>Last Post</th>
     </tr>
   </thead>
   <tbody>
     <%= for category <- @categories do %>
       <tr>
-        <td><strong><%= category.title %></strong></td>
+        <td><strong><%= link(category.title, to: category_path(@conn, :show, category)) %></strong></td>
         <td>
-            <%= link("new subject", to: subject_path(@conn, :new, category_id: category.id), class: "btn-sm btn-success")  %>
-            <%= link("Delete Category", to: category_path(@conn, :delete, category), method: :delete, class: "btn-sm btn-danger") %>
+          <%= link("Delete Category", to: category_path(@conn, :delete, category), method: :delete, class: "btn-sm btn-danger") %>
         </td>
-        <td></td>
-        <%= render MockForum.Web.PageView, "_subjects.html", conn: @conn, category: category %>
+        <td>
+        <%= if category.latest_thread do %>
+          <%= render MockForum.Web.PageView, "_thread.html", conn: @conn, thread: category.latest_thread %>
+        <% end %>
+        </td>
       </tr>
-  <% end %>
-
+    <% end %>
   </tbody>
 </table>
 

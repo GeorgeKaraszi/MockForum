@@ -1,4 +1,5 @@
-<h3><%= @subject.title %></h3> <%= link("Edit", to: subject_path(@conn, :edit, @subject), class: "btn btn-primary") %>
+<h3><%= @category.title %></h3>
+<%= link("Edit", to: category_path(@conn, :edit, @category), class: "btn-sm btn-primary") %>
 
 <br/><br/>
 
@@ -7,20 +8,25 @@
     <tr>
       <th></th>
       <th>Last Updated</th>
-      <th></th>
+      <th><%= link("New Thread", to: category_thread_path(@conn, :new, @category.id), class: "btn-sm btn-success") %></th>
     </tr>
   </thead>
   <tbody>
-    <%= for thread <- @subject.threads do %>
-      <tr>
-        <td><%= link(thread.title, to: thread_post_path(@conn, :index, thread)) %></td>
-        <td><%= thread.updated_at %></td>
-        <td><%= link("Delete", to: subject_thread_path(@conn, :delete, @subject, thread), method: :delete) %></td>
-      </tr>
+    <%= for thread <- @category.threads do %>
+      <%= for post <- thread.posts do %>
+        <tr>
+          <td><%= link(thread.title, to: thread_post_path(@conn, :index, thread)) %></td>
+          <td><%= format_time_standard(post.updated_at) %></td>
+          <td>
+              <ul>
+                  <li>By <%= post.user.first_name %></li>
+                  <li><%= format_time_standard(post.inserted_at) %></li>
+              </ul>
+          </td>
+          <td><%= link("Delete", to: category_thread_path(@conn, :delete, @category, thread), method: :delete) %></td>
+        </tr>
+      <% end %>
   <% end %>
 
   </tbody>
 </table>
-
-<br/><br/>
-<%= link("New Thread", to: subject_thread_path(@conn, :new, @subject.id), class: "btn btn-success") %>

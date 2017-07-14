@@ -1,0 +1,11 @@
+<tbody>
+  <tr>
+    <td>
+        <%= link(@thread.title, to: thread_post_path(@conn, :index, @thread)) %>
+    </td>
+    <td>
+        By <%= @thread.latest_post.user.first_name %>
+        (<%= format_time_standard(@thread.latest_post.inserted_at) %>)
+    </td>
+  </tr>
+</tbody>

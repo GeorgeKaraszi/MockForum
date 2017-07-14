@@ -1,3 +1,0 @@
-<%= form_for @changeset, subject_path(@conn, :update, @subject), fn f -> %>
-    <%= render MockForum.Web.SubjectView, "_form.html", f: f %>
-<% end %>
