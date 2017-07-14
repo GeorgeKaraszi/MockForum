@@ -2,7 +2,7 @@
 <%= form_for @changeset, profile_path(@conn, :update), [multipart: true], fn f -> %>
   <div class="form-group">
     <label>Photo</label>
-    <%= file_input f, :avatar, class: "form-control" %>
+    <%= file_input f, :avatar, accept: "image/*", class: "form-control" %>
     <%= error_tag f, :avatar %>
   </div>
 

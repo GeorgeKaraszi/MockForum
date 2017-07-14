@@ -35,7 +35,10 @@ defmodule MockForum.Mixfile do
      {:ecto, "~> 2.1"},
      {:ex_machina, github: "thoughtbot/ex_machina", only: :test},
      {:faker, "~> 0.8", only: :test},
+     {:arc, "~> 0.8.0"},
      {:arc_ecto, "~> 0.7.0"},
+     {:ex_aws, "~> 1.1"},
+     {:sweet_xml, "~> 0.6"},
      {:ex_machina, github: "thoughtbot/ex_machina", only: :test}]
   end
 
