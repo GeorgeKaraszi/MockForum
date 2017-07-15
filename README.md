@@ -41,7 +41,7 @@ Packages Currently effected as of **6-11-2017**
         Add the `C:\Program Files (x86)\GnuWin32\bin` to your System's Path list
 
 * Modifying dependencies - _Replace the following files_
-    1. **deps/certify/rebar.config**
+    1. **deps/certifi/rebar.config**
 
         ```
         {erl_opts, []}.
