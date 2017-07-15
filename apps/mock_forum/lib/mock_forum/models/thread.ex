@@ -7,17 +7,20 @@ defmodule MockForum.Thread do
         associations: [posts: :user]
 
     schema "threads" do
-        belongs_to :subject, MockForum.Subject
+        belongs_to :category, MockForum.Category
         has_many :posts, MockForum.Post, on_delete: :delete_all
-
         field :title, :string
+
+        # Virtual / Decorator fields
+        field :latest_post, :string, virtual: true
+
         timestamps()
     end
 
     def changeset(struct \\ %Thread{}, params \\ %{}) do
         struct
-        |> cast(params, [:title, :subject_id])
-        |> cast_assoc(:subject)
+        |> cast(params, [:title, :category_id])
+        |> cast_assoc(:category)
         |> cast_assoc(:posts)
         |> validate_required([:title])
     end
@@ -26,10 +29,10 @@ defmodule MockForum.Thread do
         changeset(%Thread{posts: [Post.changeset]}, record_params)
     end
 
-    def create(subject, user, thread_params) do
+    def create(category, user, thread_params) do
         thread_params = assign_user(thread_params, user)
 
-        subject
+        category
         |> build_assoc(:threads)
         |> changeset(thread_params)
         |> Repo.insert

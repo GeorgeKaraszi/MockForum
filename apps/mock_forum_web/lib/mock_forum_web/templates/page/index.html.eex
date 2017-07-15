@@ -1,25 +1,23 @@
-<%= link("new category", to: category_path(@conn, :new), class: "btn btn-primary")  %>
 
-<table class="table table-striped" cellspacing="0", width="100%">
-  <thead>
-    <tr>
-      <th>Forum</th>
-      <th>Last Post</th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="menu">
+  <%= link("new category", to: category_path(@conn, :new), class: "btn btn-primary")  %>
+</div>
+
+<div class="container">
+  <div class="row aligned-row">
     <%= for category <- @categories do %>
-      <tr>
-        <td><strong><%= category.title %></strong></td>
-        <td>
-            <%= link("new subject", to: subject_path(@conn, :new, category_id: category.id), class: "btn-sm btn-success")  %>
-            <%= link("Delete Category", to: category_path(@conn, :delete, category), method: :delete, class: "btn-sm btn-danger") %>
-        </td>
-        <td></td>
-        <%= render MockForum.Web.PageView, "_subjects.html", conn: @conn, category: category %>
-      </tr>
-  <% end %>
-
-  </tbody>
-</table>
-
+      <div class="col-sm-4">
+        <figure class="title_card">
+          <figcaption><i class="ion-ios-paw-outline"></i>
+            <h3><%= category.title %></h3>
+            <%= if category.latest_thread do %>
+              <%= render MockForum.Web.PageView, "_thread.html", conn: @conn, thread: category.latest_thread %>
+            <% end %>
+            <%= link("Show More", to: category_path(@conn, :show, category), class: "button") %> <br/> <br/>
+            <%= link("Delete", to: category_path(@conn, :delete, category), method: :delete, class: "btn-sm btn-warning")%>
+          </figcaption>
+        </figure>
+      </div>
+    <% end %>
+  </div>
+</div>

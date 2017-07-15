@@ -1,3 +1,3 @@
-<h1><%= @thread.title %></h1> <%= link("Edit Title", to: subject_thread_path(@conn, :edit, @subject, @thread), class: "btn btn-primary") %>
+<h1><%= @thread.title %></h1> <%= link("Edit Title", to: category_thread_path(@conn, :edit, @category, @thread), class: "btn btn-primary") %>
 
-<%= link("Delete Thread", to: subject_thread_path(@conn, :delete, @subject, @thread), method: :delete, class: "btn btn-primary") %>
+<%= link("Delete Thread", to: category_thread_path(@conn, :delete, @category, @thread), method: :delete, class: "btn btn-primary") %>

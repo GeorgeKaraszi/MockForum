@@ -1,0 +1,7 @@
+<ul>
+  <li> <%= link(@thread.title, to: thread_post_path(@conn, :index, @thread)) %> </li>
+  <li>
+    By <%= MockForum.UserDecorator.decorate(@thread.latest_post.user).profile_name %>
+    (<%= format_time_standard(@thread.latest_post.inserted_at) %>)
+  </li>
+</ul>

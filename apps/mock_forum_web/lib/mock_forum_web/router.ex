@@ -18,9 +18,9 @@ defmodule MockForum.Web.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/category", CategoryController, expect: [:index]
-    resources "/subject", SubjectController do
-          resources "/thread", ThreadController, except: [:index]
+
+    resources "/category", CategoryController do
+      resources "/thread", ThreadController, except: [:index]
     end
 
     resources "/profile", ProfileController, except: [:delete], singleton: true

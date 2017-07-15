@@ -7,7 +7,7 @@ defmodule MockForum.ThreadFactory do
       def thread_factory do
         %MockForum.Thread{
           title: Company.bs,
-          subject: build(:subject)
+          category: build(:category)
         }
       end
 
