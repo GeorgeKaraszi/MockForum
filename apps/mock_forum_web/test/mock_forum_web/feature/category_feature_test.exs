@@ -21,7 +21,7 @@ defmodule MockForum.Web.Feature.SubjectFeatureTest do
       |> click(link("new category"))
       |> fill_in(text_field("category_title"), with: "My Title")
       |> click(button("Submit"))
-      |> assert_has(link("My Title"))
+      |> assert_has(link("Show More"))
     end
 
     test "A category title cannot be blank", %{session: session} do
@@ -37,10 +37,10 @@ defmodule MockForum.Web.Feature.SubjectFeatureTest do
 
   describe "Viewing a new category" do
     test "A category can be clicked on linking to topics", %{session: session} do
-      category = insert(:category)
+      insert(:category)
       session
       |> visit("/")
-      |> click(link(category.title))
+      |> click(link("Show More"))
       |> assert_has(link("New Thread"))
     end
   end

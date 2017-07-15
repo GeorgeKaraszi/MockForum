@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/timeline.css") %>">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/font.css") %>">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/timeline.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/title_card.css") %>">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" rel="stylesheet" />
   </head>
 
