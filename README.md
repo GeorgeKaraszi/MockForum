@@ -24,7 +24,7 @@ We can temporary resolve this issue by doing a semi-hackey fix by compiling it w
 
 Packages Currently effected as of **6-11-2017**
 * **unicode_util_compat** (0.2.0) - Dependency of UeberAuth 
-* **certify** (1.2.1) - Dependency of UeberAuth
+* **certifi** (1.2.1) - Dependency of UeberAuth
 
 ## Temp-Solution
 
