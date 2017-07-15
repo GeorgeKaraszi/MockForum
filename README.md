@@ -16,6 +16,11 @@ Assign the proper key values to the `.env.dev` file
   * Install Node.js dependencies with `cd /apps/mock_forum_web/assets && npm install`
   * Start Phoenix endpoint with `mix phx.server`
 
+# Project Prerequisite's
+
+* Postgres v9.6
+* Imagemagick v6+
+
 # Heroku Prerequisite's
 
 ## Build packs
