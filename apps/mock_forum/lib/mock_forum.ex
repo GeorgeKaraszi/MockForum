@@ -8,7 +8,17 @@ defmodule MockForum do
       import Ecto.Changeset
       import Ecto.Query
       import MockForum.Commands.StructCommands
-      alias MockForum.{Repo, User, Thread, Post, Category, Avatar}
+      alias MockForum.{
+        Repo,
+        User,
+        Thread,
+        Post,
+        Category,
+        Avatar,
+        Mailbox.Conversation,
+        Mailbox.Message,
+        Mailbox.Recipient
+      }
     end
   end
 

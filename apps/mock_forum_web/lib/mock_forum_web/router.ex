@@ -26,6 +26,7 @@ defmodule MockForum.Web.Router do
     resources "/profile", ProfileController, except: [:delete], singleton: true
     get "/profile/:id", ProfileController, :profile
 
+    resources "/mailbox", Mailbox.MessageCenterController, except: [:delete]
   end
 
   scope "/thread/:thread_id", MockForum.Web, as: :thread do

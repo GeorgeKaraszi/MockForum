@@ -1,0 +1,127 @@
+.chatbox {
+    margin: 30px;
+    padding: 0;
+    font-family: Tahoma, sans-serif;
+    box-sizing: border-box;
+    width: 700px;
+    min-width: 390px;
+    height: 600px;
+    margin: 20px auto;
+    /* background: #2A76DC; */
+    /* box-shadow: 3px 3px #32E875; */
+}
+
+.chatlogs {
+    padding: 10px;
+    width: 100%;
+    height: 450px;
+    background: #eee;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.chatlogs::-webkit-scrollbar {
+    width: 10px;
+}
+
+.chatlogs::-webkit-scrollbar {
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .1);
+}
+
+.chat {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.chat .user-photo {
+    width: 60px;
+    height: 60px;
+    background: #ccc;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.chat .user-photo img {
+    width: 100%;
+}
+
+.chat .chat-message {
+    width: 80%;
+    padding: 15px;
+    margin: 5px 10px 0;
+    background: #B24C63;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.friend .chat-message {
+    background: #1adda4;
+}
+
+.self .chat-message {
+    background: #1ddced;
+    order: -1;
+}
+
+.chat-form {
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.chat-form textarea {
+    background: #fbfbfb;
+    width: 85%;
+    height: 50px;
+    border: 2px solid #eee;
+    border-radius: 3px;
+    resize: none;
+    font-size: 18px;
+    color: #333;
+}
+
+.chat-form textarea:focus {
+    background: #fff
+}
+
+.chat-form textarea::-webkit-scrollbar {
+    width: 10px;
+}
+
+.chat-form textarea::-webkit-scrollbar {
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .1);
+}
+
+.chat-form button {
+    background: #1ddced;
+    padding: 5px 15px;
+    font-size: 30px;
+    color: #fff;
+    border: none;
+    margin: 0 10px;
+    border-radius: 3px;
+    box-shadow: 0 3px 0 #0eb2c1;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.char-form button:hover {
+    background: #13c8a9
+}
+
+.chat-participants {
+    background: #eee;
+    display: flex;
+    position: left;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: flex-start; */
+}
+
+.chat-participants {
+    width: 25%;
+}

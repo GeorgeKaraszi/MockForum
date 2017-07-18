@@ -1,0 +1,33 @@
+<div class="chatbox">
+
+    <div class="chat-participants">
+        <div class="participant">
+            <div class="user-photo"></div>
+            <div class="user-info">John</div>
+        </div>
+        <div class="participant">
+            <div class="user-photo"></div>
+            <div class="user-info">Ben</div>
+        </div>
+    </div>
+
+    <div class="chatlogs">
+        <div class="chat self">
+            <div class="user-photo"></div>
+            <p class="chat-message">What up!</p>
+        </div>
+        <div class="chat friend">
+            <div class="user-photo"></div>
+            <p class="chat-message">Not much</p>
+        </div>
+        <div class="chat self">
+            <div class="user-photo"></div>
+            <p class="chat-message">cool</p>
+        </div>
+    </div>
+
+    <div class="chat-form">
+        <textarea></textarea>
+        <button>Send</button>
+    </div>
+</div>

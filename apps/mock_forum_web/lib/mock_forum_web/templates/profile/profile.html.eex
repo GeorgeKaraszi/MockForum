@@ -1,1 +1,2 @@
+<%= link("Private Message ME!", to: message_center_path(@conn, :new, receipient_id: @user.id)) %>
 <%= render MockForum.Web.ProfileView, "_basic_profile.html", user: @user %>

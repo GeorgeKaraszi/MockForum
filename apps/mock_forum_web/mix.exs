@@ -24,7 +24,7 @@ defmodule MockForum.Web.Mixfile do
       mod: {MockForum.Web.Application, []},
       extra_applications: [
         :logger, :runtime_tools, :ueberauth, :ueberauth_github,
-        :timex, :ex_aws
+        :timex, :ex_aws, :ex_machina
       ]
     ]
   end
@@ -53,7 +53,7 @@ defmodule MockForum.Web.Mixfile do
      {:ex_aws, "~> 1.1"},
      {:sweet_xml, "~> 0.6"},
      {:wallaby, github: "keathley/wallaby", only: :test},
-     {:ex_machina, github: "thoughtbot/ex_machina", only: :test}]
+     {:ex_machina, github: "thoughtbot/ex_machina"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

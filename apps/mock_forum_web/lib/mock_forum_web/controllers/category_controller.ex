@@ -37,7 +37,7 @@ defmodule MockForum.Web.CategoryController do
     end
 
     def edit(conn, %{"id" => category_id}) do
-        category   = Category.find!(category_id)
+        category  = Category.find!(category_id)
         changeset = Category.changeset(category)
 
         render conn, "edit.html", changeset: changeset, category: category
