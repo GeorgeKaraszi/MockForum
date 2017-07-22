@@ -3,8 +3,8 @@
         <div class="col-sm-4">
             <a href="?msg=15" class="chat-person">
                 <span class="chatimg">
-                <img src="http://via.placeholder.com/50x50?text=A" alt="" />
-            </span>
+                        <img src="http://via.placeholder.com/50x50?text=A" alt="" />
+                    </span>
                 <div class="conversation">
                     <div class="pname">Aperson name here</div>
                     <div class="lastmsg">sdk nskdfjnlssdf sdf ss fsdaf kjlsadjf nkksaddbhk jasddl sdf kjsdfoashf89f sdbfoi nkksaddbhk jasddl</div>
@@ -23,17 +23,14 @@
 
             </div>
 
-        <%= form_for @changeset, message_center_path(@conn, :create, @conversation), fn f -> %>
             <div class="row">
                 <div class="col-xs-9">
-                    <%= text_input f, :message, placeholder: "Yozing...", class: "form-control" %>
-                    chatting with <%= @recipent.profile_name %>
+                    <input type="text" placeholder="Yozing..." class="form-control" />
                 </div>
                 <div class="col-xs-3">
-                    <%= submit "Send", class: "btn btn-info btn-block" %>
+                    <button class="btn btn-info btn-block">Send</button>
                 </div>
             </div>
-        <% end %>
 
         </div>
     </div>
