@@ -38,8 +38,7 @@ defmodule MockForum.Mixfile do
      {:arc, "~> 0.8.0"},
      {:arc_ecto, "~> 0.7.0"},
      {:ex_aws, "~> 1.1"},
-     {:sweet_xml, "~> 0.6"},
-     {:ex_machina, github: "thoughtbot/ex_machina", only: :test}]
+     {:sweet_xml, "~> 0.6"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
