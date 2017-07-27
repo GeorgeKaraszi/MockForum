@@ -15,7 +15,8 @@ use Mix.Config
 # which you typically run after static files are built.
 config :mock_forum_web, MockForum.Web.Endpoint,
   on_init: {MockForum.Web.Endpoint, :load_from_system_env, []},
-  url: [host: System.get_env("HOST_URL"), port: System.get_env("PORT") || 443],
+  http: [port: System.get_env("PORT")],
+  url: [host: System.get_env("HOST_URL"), port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json",
   secret_key_base: System.get_env("SECRET_KEY_BASE")
